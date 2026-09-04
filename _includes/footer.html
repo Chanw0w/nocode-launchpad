@@ -133,13 +133,14 @@
   }
 
   .newsletter-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
     font-weight: 800;
     color: var(--text-bright);
     line-height: 1.2;
     margin: 0 0 16px;
     letter-spacing: -0.02em;
     font-family: var(--font-heading);
+    text-wrap: balance; /* Principle 10: Even distribution */
   }
 
   .newsletter-description {
@@ -147,6 +148,7 @@
     line-height: 1.7;
     margin: 0 0 32px;
     color: var(--text-secondary);
+    text-wrap: pretty; /* Principle 10: Avoid orphan words */
   }
 
   .newsletter-form {

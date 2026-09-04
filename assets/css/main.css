@@ -125,6 +125,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--text-bright);
+  text-wrap: balance; /* Principle 10: Even distribution across lines */
 }
 
 h1 {
@@ -147,6 +148,19 @@ h4 {
 p {
   margin-bottom: 1.5em;
   color: var(--text-secondary);
+  text-wrap: pretty; /* Principle 10: Avoid orphan words */
+}
+
+/* Principle 9: Cap the measure for readability */
+.prose,
+.post-content {
+  max-width: 65ch;
+}
+
+/* Principle 11: Tabular numbers for changing values */
+.tabular-nums,
+[data-value] {
+  font-variant-numeric: tabular-nums;
 }
 
 a {
@@ -159,8 +173,33 @@ a:hover {
   color: var(--color-cyan-dim);
 }
 
+/* Principle 14: Better underline styling for content links */
+.post-content a,
+.prose a {
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: auto;
+}
+
+.post-content a:hover,
+.prose a:hover {
+  text-decoration-thickness: 2px;
+}
+
 strong {
   color: var(--text-bright);
+}
+
+/* Principle 13: Smart punctuation styling */
+em {
+  font-style: italic;
+}
+
+/* Principle 8: Letter-spacing for small caps/labels */
+.label,
+.caption {
+  letter-spacing: 0.05em;
 }
 
 /* Images */
@@ -457,6 +496,7 @@ pre code {
   max-width: 540px;
   margin-bottom: var(--space-8);
   line-height: 1.7;
+  text-wrap: pretty; /* Principle 10: Avoid orphan words */
 }
 
 .hero-actions {
@@ -572,6 +612,7 @@ pre code {
 .post-content {
   font-size: 1.125rem;
   line-height: 1.8;
+  max-width: 65ch; /* Principle 9: Cap the measure */
 }
 
 .post-content h2 {
@@ -598,6 +639,7 @@ pre code {
 
 .post-content li {
   margin-bottom: 0.5em;
+  line-height: 1.6; /* Principle 7: Body copy needs 1.5-1.6 */
 }
 
 .post-content blockquote {
