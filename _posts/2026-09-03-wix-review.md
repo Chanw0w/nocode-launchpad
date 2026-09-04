@@ -10,7 +10,7 @@ author: Your Name
 affiliate:
   title: "Try Wix Free"
   description: "Create your professional website with Wix's free plan. No coding required."
-  url: "https://wix.com/?ref=nocodellaunchpad"
+  url: "https://wix.pxf.io/c/7105524/2049257/25616?trafcat=wsb"
   cta: "Start Building Free"
 ---
 
@@ -123,7 +123,7 @@ For small businesses, freelancers, and anyone who values ease-of-use over maximu
 <div class="affiliate-box">
   <h3>Ready to Build Your Website?</h3>
   <p>Start with Wix's free plan and upgrade when you're ready. No credit card required.</p>
-  <a href="https://wix.com/?ref=nocodellaunchpad" class="btn btn-primary" target="_blank" rel="noopener sponsored">
+  <a href="https://wix.pxf.io/c/7105524/2049257/25616?trafcat=wsb" class="btn btn-primary" target="_blank" rel="noopener sponsored">
     Start Building Free
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
       <path d="M12 4L4 12M12 4H6M12 4V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -155,7 +155,7 @@ For small businesses, freelancers, and anyone who values ease-of-use over maximu
 
 ## Getting Started with Wix
 
-1. **Sign up free** at [wix.com](https://wix.com/?ref=nocodellaunchpad)
+1. **Sign up free** at [wix.com](https://wix.pxf.io/c/7105524/2049257/25616?trafcat=wsb)
 2. **Choose a template** that matches your industry
 3. **Customize** with the drag-and-drop editor
 4. **Add content** - text, images, videos
