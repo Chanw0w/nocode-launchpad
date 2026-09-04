@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neural Flow - Algorithmic Art</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: #050508;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #e2e8f0;
+      overflow: hidden;
+    }
+    
+    #canvas-container {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 
+        0 0 40px rgba(0, 212, 255, 0.15),
+        0 0 80px rgba(124, 58, 237, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    
+    canvas {
+      display: block;
+    }
+    
+    .controls {
+      margin-top: 24px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 600px;
+    }
+    
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    label {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 120px;
+      height: 6px;
+      background: #141420;
+      border-radius: 3px;
+      outline: none;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: linear-gradient(135deg, #00d4ff, #7c3aed);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    
+    input[type="number"] {
+      width: 80px;
+      padding: 6px 8px;
+      background: #141420;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      color: #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+    }
+    
+    button {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #00d4ff, #7c3aed);
+      border: none;
+      border-radius: 8px;
+      color: #050508;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+    }
+    
+    .info {
+      margin-top: 16px;
+      font-size: 0.75rem;
+      color: #475569;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+  
+  <div class="controls">
+    <div class="control-group">
+      <label>Seed</label>
+      <input type="number" id="seed" value="42" min="0" max="99999">
+    </div>
+    
+    <div class="control-group">
+      <label>Particles</label>
+      <input type="range" id="particles" min="50" max="400" value="200">
+    </div>
+    
+    <div class="control-group">
+      <label>Noise Scale</label>
+      <input type="range" id="noiseScale" min="100" max="1000" value="400">
+    </div>
+    
+    <div class="control-group">
+      <label>Connection Distance</label>
+      <input type="range" id="connectionDist" min="50" max="200" value="100">
+    </div>
+    
+    <div class="control-group">
+      <label>Speed</label>
+      <input type="range" id="speed" min="1" max="10" value="3">
+    </div>
+    
+    <button onclick="resetSketch()">Reset</button>
+    <button onclick="randomSeed()">Random Seed</button>
+  </div>
+  
+  <div class="info">
+    Drag sliders to explore • Click canvas to pause/resume • Seed ensures reproducibility
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════════
+    // Neural Flow - Generative Algorithm
+    // ═══════════════════════════════════════════════════════════════
+    
+    let particles = [];
+    let seed = 42;
+    let paused = false;
+    let time = 0;
+    
+    // Parameters
+    let params = {
+      particleCount: 200,
+      noiseScale: 400,
+      connectionDist: 100,
+      speed: 3,
+      trailOpacity: 0.05
+    };
+    
+    // Color palette (matching blog theme)
+    const COLORS = {
+      cyan: [0, 212, 255],
+      purple: [124, 58, 237],
+      green: [0, 255, 136],
+      amber: [251, 191, 36]
+    };
+    
+    function setup() {
+      let canvas = createCanvas(600, 600);
+      canvas.parent('canvas-container');
+      
+      // Initialize with seed
+      initFromSeed();
+      
+      // Set up control listeners
+      document.getElementById('seed').addEventListener('change', (e) => {
+        seed = parseInt(e.target.value);
+        initFromSeed();
+      });
+      
+      document.getElementById('particles').addEventListener('input', (e) => {
+        params.particleCount = parseInt(e.target.value);
+        initParticles();
+      });
+      
+      document.getElementById('noiseScale').addEventListener('input', (e) => {
+        params.noiseScale = parseInt(e.target.value);
+      });
+      
+      document.getElementById('connectionDist').addEventListener('input', (e) => {
+        params.connectionDist = parseInt(e.target.value);
+      });
+      
+      document.getElementById('speed').addEventListener('input', (e) => {
+        params.speed = parseInt(e.target.value);
+      });
+      
+      canvas.mousePressed(() => {
+        paused = !paused;
+      });
+    }
+    
+    function initFromSeed() {
+      randomSeed(seed);
+      noiseSeed(seed);
+      initParticles();
+      time = 0;
+      
+      // Clear canvas
+      background(5, 5, 8);
+    }
+    
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < params.particleCount; i++) {
+        particles.push({
+          x: random(width),
+          y: random(height),
+          vx: 0,
+          vy: 0,
+          age: 0,
+          maxAge: random(200, 500),
+          hue: random() // For color variation
+        });
+      }
+    }
+    
+    function draw() {
+      if (paused) return;
+      
+      // Semi-transparent background for trails
+      fill(5, 5, 8, 20);
+      noStroke();
+      rect(0, 0, width, height);
+      
+      // Update and draw particles
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        
+        // Get noise field angle
+        let angle = noise(p.x / params.noiseScale, p.y / params.noiseScale, time * 0.001) * TWO_PI * 2;
+        
+        // Apply force from noise field
+        let force = params.speed * 0.5;
+        p.vx += cos(angle) * force;
+        p.vy += sin(angle) * force;
+        
+        // Damping
+        p.vx *= 0.95;
+        p.vy *= 0.95;
+        
+        // Limit velocity
+        let maxSpeed = params.speed;
+        let speed = sqrt(p.vx * p.vx + p.vy * p.vy);
+        if (speed > maxSpeed) {
+          p.vx = (p.vx / speed) * maxSpeed;
+          p.vy = (p.vy / speed) * maxSpeed;
+        }
+        
+        // Update position
+        p.x += p.vx;
+        p.y += p.vy;
+        p.age++;
+        
+        // Wrap around edges
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+        
+        // Reset if too old
+        if (p.age > p.maxAge) {
+          p.x = random(width);
+          p.y = random(height);
+          p.vx = 0;
+          p.vy = 0;
+          p.age = 0;
+        }
+        
+        // Draw connections to nearby particles
+        for (let j = i + 1; j < particles.length; j++) {
+          let p2 = particles[j];
+          let d = dist(p.x, p.y, p2.x, p2.y);
+          
+          if (d < params.connectionDist) {
+            let alpha = map(d, 0, params.connectionDist, 150, 0);
+            let c = lerpColor(
+              color(...COLORS.cyan, alpha),
+              color(...COLORS.purple, alpha),
+              p.hue
+            );
+            stroke(c);
+            strokeWeight(map(d, 0, params.connectionDist, 1.5, 0.5));
+            line(p.x, p.y, p2.x, p2.y);
+          }
+        }
+        
+        // Draw particle
+        let brightness = map(p.age, 0, 50, 0, 1);
+        brightness *= map(p.age, p.maxAge - 50, p.maxAge, 1, 0);
+        brightness = constrain(brightness, 0, 1);
+        
+        let particleColor;
+        if (p.hue < 0.6) {
+          particleColor = color(...COLORS.cyan, 200 * brightness);
+        } else if (p.hue < 0.8) {
+          particleColor = color(...COLORS.purple, 200 * brightness);
+        } else {
+          particleColor = color(...COLORS.green, 200 * brightness);
+        }
+        
+        noStroke();
+        fill(particleColor);
+        ellipse(p.x, p.y, 4 * brightness, 4 * brightness);
+        
+        // Glow effect for bright particles
+        if (brightness > 0.5) {
+          fill(particleColor.levels[0], particleColor.levels[1], particleColor.levels[2], 50 * brightness);
+          ellipse(p.x, p.y, 12 * brightness, 12 * brightness);
+        }
+      }
+      
+      time++;
+    }
+    
+    function resetSketch() {
+      seed = parseInt(document.getElementById('seed').value);
+      initFromSeed();
+    }
+    
+    function randomSeed() {
+      seed = floor(random(100000));
+      document.getElementById('seed').value = seed;
+      initFromSeed();
+    }
+  </script>
+</body>
+</html>
