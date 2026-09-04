@@ -1,0 +1,144 @@
+# .github/workflows/deploy-aws-oidc.yml
+# Secure AWS deployment using OIDC - No static secrets required
+
+name: Deploy to AWS (OIDC)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Required for OIDC token
+permissions:
+  id-token: write
+  contents: read
+
+# Environment with protection rules
+environment:
+  name: production
+  url: https://your-app.example.com
+
+jobs:
+  deploy:
+    name: Deploy to AWS
+    runs-on: ubuntu-latest
+    
+    # Only deploy from main branch
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Configure AWS credentials using OIDC
+      # This replaces static access keys with temporary, scoped credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          # Role to assume (created in AWS IAM)
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsRole
+          
+          # AWS region
+          aws-region: us-east-1
+          
+          # Optional: Audience for the OIDC token
+          audience: sts.amazonaws.com
+          
+          # Optional: Session duration (default 3600 seconds)
+          role-duration-seconds: 3600
+          
+          # Optional: Session name for CloudTrail
+          role-session-name: GitHubActions-${{ github.run_id }}
+
+      # Step 3: Verify credentials work
+      - name: Verify AWS credentials
+        run: |
+          echo "✅ Successfully authenticated with AWS"
+          echo "Account ID: $(aws sts get-caller-identity --query Account --output text)"
+          echo "Role ARN: $(aws sts get-caller-identity --query Arn --output text)"
+          echo "Region: ${{ env.AWS_REGION }}"
+
+      # Step 4: Deploy application (example: S3 + CloudFront)
+      - name: Build application
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to S3
+        run: |
+          aws s3 sync ./dist s3://${{ secrets.S3_BUCKET_NAME }} \
+            --delete \
+            --cache-control "max-age=31536000,public" \
+            --exclude "index.html" \
+            --exclude "service-worker.js"
+          
+          # Upload HTML with no-cache
+          aws s3 cp ./dist/index.html s3://${{ secrets.S3_BUCKET_NAME }}/index.html \
+            --cache-control "no-cache,no-store,must-revalidate"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
+
+      # Step 5: Notify on success
+      - name: Deployment success
+        if: success()
+        run: |
+          echo "🚀 Deployment successful!"
+          echo "Environment: production"
+          echo "Commit: ${{ github.sha }}"
+          echo "Triggered by: ${{ github.actor }}"
+
+      # Step 6: Notify on failure
+      - name: Deployment failed
+        if: failure()
+        run: |
+          echo "❌ Deployment failed!"
+          echo "Check the logs above for details."
+          exit 1
+
+  # Optional: Run tests before deploying
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        run: npm test
+      
+      - name: Run linting
+        run: npm run lint
+
+  # Optional: Security scanning
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '1'
