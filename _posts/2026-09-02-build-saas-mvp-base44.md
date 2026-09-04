@@ -10,7 +10,7 @@ author: Your Name
 affiliate:
   title: "Follow Along with Base44"
   description: "Sign up for Base44 and build your MVP alongside this tutorial."
-  url: "https://base44.com/?ref=nocodellaunchpad"
+  url: "https://base44.pxf.io/c/7105524/2049275/25619?trafcat=lp"
   cta: "Start Building"
 ---
 
@@ -36,7 +36,7 @@ In this tutorial, we'll build a simple project management tool with:
 
 ## Prerequisites
 
-- A Base44 account ([sign up free](https://base44.com/?ref=nocodellaunchpad))
+- A Base44 account ([sign up free](https://base44.pxf.io/c/7105524/2049275/25619?trafcat=lp))
 - A clear idea of your core feature
 - Basic understanding of data relationships
 
@@ -221,7 +221,7 @@ Once your MVP is live:
 <div class="affiliate-box">
   <h3>Ready to Build Your MVP?</h3>
   <p>Start with Base44's free plan and have your SaaS live in 24 hours.</p>
-  <a href="https://base44.com/?ref=nocodellaunchpad" class="btn btn-primary" target="_blank" rel="noopener sponsored">
+  <a href="https://base44.pxf.io/c/7105524/2049275/25619?trafcat=lp" class="btn btn-primary" target="_blank" rel="noopener sponsored">
     Start Building Free
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
       <path d="M12 4L4 12M12 4H6M12 4V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
