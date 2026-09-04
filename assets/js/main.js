@@ -1,4 +1,5 @@
 // Main JavaScript for NoCode Launchpad
+// Dark Tech Theme with Haptic Feedback
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all components
@@ -7,9 +8,63 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initNewsletterForm();
   initAnimations();
+  initHaptics();
+  initAffiliateTracking();
 });
 
+// ═══════════════════════════════════════════════════════════════
+// Haptic Feedback (Mobile)
+// ═══════════════════════════════════════════════════════════════
+
+function initHaptics() {
+  // Check if Vibration API is supported
+  const supportsVibration = 'vibrate' in navigator;
+  
+  if (!supportsVibration) return;
+  
+  // Haptic patterns
+  const haptics = {
+    light: () => navigator.vibrate(10),
+    medium: () => navigator.vibrate(20),
+    heavy: () => navigator.vibrate(40),
+    success: () => navigator.vibrate([30, 50, 30]),
+    error: () => navigator.vibrate([50, 30, 50, 30, 50]),
+    selection: () => navigator.vibrate(5),
+  };
+  
+  // Add haptic feedback to buttons
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('.btn');
+    if (!target) return;
+    
+    if (target.classList.contains('btn-primary')) {
+      haptics.success();
+    } else {
+      haptics.light();
+    }
+  });
+  
+  // Add haptic to mobile menu toggle
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      haptics.medium();
+    });
+  }
+  
+  // Add haptic to form submissions
+  document.addEventListener('submit', () => {
+    haptics.success();
+  });
+  
+  // Store haptics globally for use in other scripts
+  window.haptics = haptics;
+}
+
+// ═══════════════════════════════════════════════════════════════
 // Mobile Menu
+// ═══════════════════════════════════════════════════════════════
+
 function initMobileMenu() {
   const menuToggle = document.getElementById('mobile-menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -34,7 +89,10 @@ function initMobileMenu() {
   });
 }
 
+// ═══════════════════════════════════════════════════════════════
 // Header Scroll Effect
+// ═══════════════════════════════════════════════════════════════
+
 function initScrollHeader() {
   const header = document.getElementById('site-header');
   if (!header) return;
@@ -61,7 +119,10 @@ function initScrollHeader() {
   });
 }
 
+// ═══════════════════════════════════════════════════════════════
 // Smooth Scroll
+// ═══════════════════════════════════════════════════════════════
+
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -77,7 +138,10 @@ function initSmoothScroll() {
   });
 }
 
+// ═══════════════════════════════════════════════════════════════
 // Newsletter Form
+// ═══════════════════════════════════════════════════════════════
+
 function initNewsletterForm() {
   const forms = document.querySelectorAll('.newsletter-form');
   
@@ -107,8 +171,13 @@ function initNewsletterForm() {
         
         // Show success
         submitBtn.innerHTML = '✓ Subscribed!';
-        submitBtn.style.background = '#10b981';
+        submitBtn.style.background = 'var(--color-green)';
         emailInput.value = '';
+        
+        // Trigger success haptic
+        if (window.haptics) {
+          window.haptics.success();
+        }
         
         // Reset after 3 seconds
         setTimeout(() => {
@@ -120,7 +189,12 @@ function initNewsletterForm() {
       } catch (error) {
         console.error('Newsletter subscription error:', error);
         submitBtn.innerHTML = 'Error - Try Again';
-        submitBtn.style.background = '#ef4444';
+        submitBtn.style.background = 'var(--color-amber)';
+        
+        // Trigger error haptic
+        if (window.haptics) {
+          window.haptics.error();
+        }
         
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
@@ -132,7 +206,10 @@ function initNewsletterForm() {
   });
 }
 
+// ═══════════════════════════════════════════════════════════════
 // Animations
+// ═══════════════════════════════════════════════════════════════
+
 function initAnimations() {
   // Intersection Observer for fade-in animations
   const observerOptions = {
@@ -150,13 +227,42 @@ function initAnimations() {
   }, observerOptions);
   
   // Observe elements
-  document.querySelectorAll('.card, .post-card, .feature-card').forEach(el => {
+  document.querySelectorAll('.card, .post-card, .feature-card, .tool-card').forEach(el => {
     el.style.opacity = '0';
     observer.observe(el);
   });
 }
 
-// Utility: Debounce
+// ═══════════════════════════════════════════════════════════════
+// Affiliate Link Tracking
+// ═══════════════════════════════════════════════════════════════
+
+function initAffiliateTracking() {
+  // Track affiliate link clicks
+  document.querySelectorAll('a[href*="pxf.io"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const url = link.href;
+      const program = url.includes('base44') ? 'Base44' : 'Wix';
+      
+      // Log to console (replace with analytics)
+      console.log(`Affiliate click: ${program}`, url);
+      
+      // Google Analytics event
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'affiliate_click', {
+          'event_category': 'affiliate',
+          'event_label': program,
+          'value': 1
+        });
+      }
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Utilities
+// ═══════════════════════════════════════════════════════════════
+
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -169,7 +275,6 @@ function debounce(func, wait) {
   };
 }
 
-// Utility: Format number
 function formatNumber(num) {
   if (num >= 1000000) {
     return (num / 1000000).toFixed(1) + 'M';
@@ -187,6 +292,8 @@ window.NoCodeLaunchpad = {
   initSmoothScroll,
   initNewsletterForm,
   initAnimations,
+  initHaptics,
+  initAffiliateTracking,
   debounce,
   formatNumber
 };

@@ -37,8 +37,8 @@
             <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             <defs>
               <linearGradient id="footer-logo-gradient" x1="0" y1="0" x2="32" y2="32">
-                <stop stop-color="#6366f1"/>
-                <stop offset="1" stop-color="#8b5cf6"/>
+                <stop stop-color="#00d4ff"/>
+                <stop offset="1" stop-color="#7c3aed"/>
               </linearGradient>
             </defs>
           </svg>
@@ -94,9 +94,10 @@
 
 <style>
   .site-footer {
-    background: #0f172a;
-    color: #94a3b8;
+    background: var(--bg-primary);
+    color: var(--text-secondary);
     margin-top: 120px;
+    border-top: 1px solid var(--border-subtle);
   }
 
   .footer-container {
@@ -108,7 +109,7 @@
   /* Newsletter */
   .footer-newsletter {
     padding: 80px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .newsletter-content {
@@ -122,8 +123,9 @@
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
-    background: rgba(99, 102, 241, 0.2);
-    color: #818cf8;
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--color-cyan);
+    border: 1px solid rgba(0, 212, 255, 0.2);
     border-radius: 100px;
     font-size: 0.875rem;
     font-weight: 600;
@@ -133,17 +135,18 @@
   .newsletter-title {
     font-size: 2.5rem;
     font-weight: 800;
-    color: white;
+    color: var(--text-bright);
     line-height: 1.2;
     margin: 0 0 16px;
     letter-spacing: -0.02em;
+    font-family: var(--font-heading);
   }
 
   .newsletter-description {
     font-size: 1.125rem;
     line-height: 1.7;
     margin: 0 0 32px;
-    color: #cbd5e1;
+    color: var(--text-secondary);
   }
 
   .newsletter-form {
@@ -155,27 +158,28 @@
   .newsletter-input {
     flex: 1;
     padding: 16px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-light);
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
+    background: var(--bg-card);
+    color: var(--text-bright);
     font-size: 1rem;
+    font-family: var(--font-body);
     transition: all 0.2s;
   }
 
   .newsletter-input::placeholder {
-    color: #64748b;
+    color: var(--text-muted);
   }
 
   .newsletter-input:focus {
     outline: none;
-    border-color: #6366f1;
-    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
   }
 
   .newsletter-note {
     font-size: 0.875rem;
-    color: #64748b;
+    color: var(--text-muted);
     margin: 0;
   }
 
@@ -202,26 +206,28 @@
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    color: white;
+    color: var(--text-bright);
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 16px;
+    font-family: var(--font-heading);
   }
 
   .footer-tagline {
     font-size: 0.9375rem;
     line-height: 1.7;
     margin: 0;
-    color: #94a3b8;
+    color: var(--text-secondary);
   }
 
   .footer-heading {
     font-size: 0.875rem;
     font-weight: 600;
-    color: white;
+    color: var(--text-bright);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin: 0 0 20px;
+    font-family: var(--font-body);
   }
 
   .footer-links {
@@ -234,14 +240,14 @@
   }
 
   .footer-links a {
-    color: #94a3b8;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.9375rem;
     transition: color 0.2s;
   }
 
   .footer-links a:hover {
-    color: white;
+    color: var(--color-cyan);
   }
 
   /* Footer Bottom */
@@ -250,7 +256,7 @@
     flex-direction: column;
     gap: 16px;
     padding: 32px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-subtle);
   }
 
   @media (min-width: 768px) {
@@ -264,7 +270,7 @@
   .footer-copyright {
     font-size: 0.875rem;
     margin: 0;
-    color: #64748b;
+    color: var(--text-muted);
   }
 
   .footer-legal {
@@ -273,14 +279,14 @@
   }
 
   .footer-legal a {
-    color: #64748b;
+    color: var(--text-muted);
     text-decoration: none;
     font-size: 0.875rem;
     transition: color 0.2s;
   }
 
   .footer-legal a:hover {
-    color: white;
+    color: var(--text-bright);
   }
 
   /* Responsive */
