@@ -488,7 +488,7 @@ pre code {
   color: var(--bg-void);
   font-weight: 600;
   font-size: 0.875rem;
-  border: 3px solid var(--bg-void);
+  border: 3px solid var(--bg-primary);
   margin-left: -8px;
 }
 
