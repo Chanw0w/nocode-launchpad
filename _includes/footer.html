@@ -1,0 +1,300 @@
+<footer class="site-footer">
+  <div class="footer-container">
+    <!-- Newsletter Section -->
+    <div class="footer-newsletter" id="newsletter">
+      <div class="newsletter-content">
+        <div class="newsletter-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 1L10 5.5L15 6L11.5 9.5L12.5 14.5L8 12L3.5 14.5L4.5 9.5L1 6L6 5.5L8 1Z" fill="currentColor"/>
+          </svg>
+          Free Guide
+        </div>
+        <h2 class="newsletter-title">Launch Your First No-Code App in 7 Days</h2>
+        <p class="newsletter-description">
+          Get the step-by-step playbook used by 2,000+ creators to build and launch profitable apps without writing code.
+        </p>
+        <form class="newsletter-form" action="https://assets.mailerlite.com/jsonp/your-form-id" method="post" target="_blank">
+          <input type="email" name="email" placeholder="Enter your email" required class="newsletter-input">
+          <button type="submit" class="btn btn-primary">
+            Get Free Access
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+        <p class="newsletter-note">
+          Join 2,000+ creators. Unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer Links -->
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="{{ '/' | relative_url }}" class="footer-logo">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="url(#footer-logo-gradient)"/>
+            <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="footer-logo-gradient" x1="0" y1="0" x2="32" y2="32">
+                <stop stop-color="#6366f1"/>
+                <stop offset="1" stop-color="#8b5cf6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>NoCode Launchpad</span>
+        </a>
+        <p class="footer-tagline">
+          Build faster without code. Expert reviews, tutorials, and deals for the best no-code platforms.
+        </p>
+      </div>
+
+      <div class="footer-links-group">
+        <h3 class="footer-heading">Content</h3>
+        <ul class="footer-links">
+          <li><a href="{{ '/tutorials' | relative_url }}">Tutorials</a></li>
+          <li><a href="{{ '/reviews' | relative_url }}">Reviews</a></li>
+          <li><a href="{{ '/tools' | relative_url }}">Tools</a></li>
+          <li><a href="{{ '/blog' | relative_url }}">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h3 class="footer-heading">Platforms</h3>
+        <ul class="footer-links">
+          <li><a href="/reviews/base44">Base44</a></li>
+          <li><a href="/reviews/wix">Wix</a></li>
+          <li><a href="/tools">All Tools</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h3 class="footer-heading">Connect</h3>
+        <ul class="footer-links">
+          <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a></li>
+          <li><a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="mailto:{{ site.email }}">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        &copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.
+      </p>
+      <div class="footer-legal">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #0f172a;
+    color: #94a3b8;
+    margin-top: 120px;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Newsletter */
+  .footer-newsletter {
+    padding: 80px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .newsletter-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(99, 102, 241, 0.2);
+    color: #818cf8;
+    border-radius: 100px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .newsletter-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .newsletter-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin: 0 0 32px;
+    color: #cbd5e1;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .newsletter-input {
+    flex: 1;
+    padding: 16px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+
+  .newsletter-input::placeholder {
+    color: #64748b;
+  }
+
+  .newsletter-input:focus {
+    outline: none;
+    border-color: #6366f1;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .newsletter-note {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0;
+  }
+
+  /* Footer Grid */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 64px 0;
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+  }
+
+  .footer-brand {
+    max-width: 300px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .footer-tagline {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin: 0;
+    color: #94a3b8;
+  }
+
+  .footer-heading {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 20px;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: white;
+  }
+
+  /* Footer Bottom */
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .footer-copyright {
+    font-size: 0.875rem;
+    margin: 0;
+    color: #64748b;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-legal a {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+
+  .footer-legal a:hover {
+    color: white;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .newsletter-title {
+      font-size: 1.75rem;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
+    }
+
+    .footer-newsletter {
+      padding: 48px 0;
+    }
+  }
+</style>

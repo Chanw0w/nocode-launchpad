@@ -1,0 +1,57 @@
+# Site Settings
+title: "NoCode Launchpad"
+description: "Build faster without code. Expert reviews, tutorials, and deals for Base44, Wix, and more."
+url: "https://yourusername.github.io"
+baseurl: ""
+author: "Your Name"
+email: "your-email@example.com"
+
+# Social
+github_username: yourusername
+twitter_username: yourusername
+linkedin_username: yourusername
+
+# Build Settings
+markdown: kramdown
+permalink: /:title/
+paginate: 10
+paginate_path: "/page/:num/"
+
+# SEO
+google_analytics: "G-XXXXXXXXXX"
+google_search_console: "your-verification-code"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Collections
+collections:
+  tutorials:
+    output: true
+    permalink: /tutorials/:title/
+  reviews:
+    output: true
+    permalink: /reviews/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Your Name"
+  - scope:
+      path: ""
+      type: "tutorials"
+    values:
+      layout: "tutorial"
+  - scope:
+      path: ""
+      type: "reviews"
+    values:
+      layout: "review"
