@@ -61,12 +61,13 @@ class EmailSignup {
   }
 
   async submitToBrevo(email) {
-    // Brevo API endpoint (update with your list ID)
-    const listId = 2; // Default list
-    const apiKey = window.BREVO_API_KEY || null;
+    // Brevo API - loaded from config.js (not committed to git)
+    const config = window.BREVO_CONFIG || {};
+    const apiKey = config.apiKey || null;
+    const listId = config.listId || 2;
 
     if (!apiKey) {
-      console.log('Brevo API key not configured, using local storage');
+      console.log('Brevo not configured, storing locally');
       return false;
     }
 
@@ -85,7 +86,17 @@ class EmailSignup {
         }),
       });
 
-      return response.ok;
+      if (response.ok) {
+        console.log('Email submitted to Brevo:', email);
+        return true;
+      } else {
+        const data = await response.json();
+        console.log('Brevo response:', data);
+        if (response.status === 400 && data.message && data.message.includes('already exists')) {
+          return true;
+        }
+        return false;
+      }
     } catch (error) {
       console.error('Brevo API error:', error);
       return false;
