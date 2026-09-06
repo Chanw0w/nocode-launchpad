@@ -1,0 +1,18 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "color-hex-length": "short",
+    "color-no-invalid-hex": true,
+    "declaration-block-no-duplicate-properties": true,
+    "no-empty-source": true,
+    "no-duplicate-selectors": true,
+    "selector-pseudo-class-no-unknown": true,
+    "selector-pseudo-element-no-unknown": true,
+    "selector-type-no-unknown": true,
+    "no-descending-specificity": null
+  },
+  "ignoreFiles": [
+    "node_modules/**/*",
+    "_site/**/*"
+  ]
+}

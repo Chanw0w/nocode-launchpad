@@ -1,22 +1,35 @@
 {
-  "name": "blog",
+  "name": "nocode-launchpad",
   "version": "1.0.0",
-  "description": "",
+  "description": "NoCode Launchpad - Build faster without code",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:smoke": "jest --testPathPattern=smoke",
+    "test:links": "jest --testPathPattern=links",
+    "test:seo": "jest --testPathPattern=seo",
+    "lint": "echo 'Linting placeholder'",
+    "lint:fix": "echo 'Lint fix placeholder'",
+    "format": "echo 'Format placeholder'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Chanw0w/nocode-launchpad.git"
   },
-  "keywords": [],
+  "keywords": ["nocode", "affiliate", "marketing", "blog"],
   "type": "commonjs",
+  "author": "Chanw0w",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Chanw0w/nocode-launchpad/issues"
   },
   "homepage": "https://github.com/Chanw0w/nocode-launchpad#readme",
   "dependencies": {
     "web-haptics": "^0.0.6"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "html-validate": "^11.14.0",
+    "jest": "^30.5.1"
   }
 }

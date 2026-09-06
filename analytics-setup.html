@@ -1,0 +1,164 @@
+---
+layout: default
+title: "Analytics Setup Guide"
+permalink: /analytics-setup/
+---
+
+<article class="page-content">
+  <div class="container-narrow">
+    <header class="page-header">
+      <h1>Analytics Setup Guide</h1>
+      <p class="page-meta">How to configure tracking for NoCode Launchpad</p>
+    </header>
+
+    <div class="post-content">
+      <h2>Google Analytics 4 Setup</h2>
+      
+      <h3>Step 1: Create GA4 Property</h3>
+      <ol>
+        <li>Go to <a href="https://analytics.google.com" target="_blank" rel="noopener">Google Analytics</a></li>
+        <li>Click <strong>Admin</strong> → <strong>Create Property</strong></li>
+        <li>Enter property name: "NoCode Launchpad"</li>
+        <li>Select timezone and currency</li>
+        <li>Choose <strong>Web</strong> platform</li>
+        <li>Enter website URL</li>
+        <li>Get your <strong>Measurement ID</strong> (G-XXXXXXXXXX)</li>
+      </ol>
+
+      <h3>Step 2: Add to Jekyll</h3>
+      <p>Update <code>_config.yml</code>:</p>
+      <pre><code>google_analytics: "G-XXXXXXXXXX"  # Your real GA4 ID</code></pre>
+
+      <h3>Step 3: Verify Tracking</h3>
+      <ol>
+        <li>Wait 24-48 hours for data to appear</li>
+        <li>Check <strong>Realtime</strong> report</li>
+        <li>Visit your site and verify pageview appears</li>
+      </ol>
+
+      <h2>Conversion Events</h2>
+      <p>Track these important events:</p>
+      
+      <table>
+        <tr>
+          <th>Event</th>
+          <th>Description</th>
+          <th>Trigger</th>
+        </tr>
+        <tr>
+          <td><code>sign_up</code></td>
+          <td>Email newsletter signup</td>
+          <td>Form submission</td>
+        </tr>
+        <tr>
+          <td><code>affiliate_click</code></td>
+          <td>Affiliate link click</td>
+          <td>Click on Base44/Wix link</td>
+        </tr>
+        <tr>
+          <td><code>tutorial_complete</code></td>
+          <td>Tutorial read completion</td>
+          <td>Scroll to bottom</td>
+        </tr>
+      </table>
+
+      <h2>Google Search Console</h2>
+      
+      <h3>Setup Steps</h3>
+      <ol>
+        <li>Go to <a href="https://search.google.com/search-console" target="_blank" rel="noopener">Search Console</a></li>
+        <li>Add property (URL prefix or Domain)</li>
+        <li>Verify via HTML tag or DNS</li>
+        <li>Submit sitemap: <code>https://chanw0w.github.io/nocode-launchpad/sitemap.xml</code></li>
+      </ol>
+
+      <h3>Key Metrics to Monitor</h3>
+      <ul>
+        <li><strong>Clicks:</strong> Traffic from search</li>
+        <li><strong>Impressions:</strong> Times shown in search</li>
+        <li><strong>CTR:</strong> Click-through rate</li>
+        <li><strong>Position:</strong> Average ranking</li>
+      </ul>
+
+      <h2>Affiliate Tracking</h2>
+      <p>Monitor affiliate performance via Impact.com API:</p>
+      <pre><code>cd ~/affiliate-marketing/playwright-scripts
+npm run api-stats</code></pre>
+
+      <h3>Key Metrics</h3>
+      <ul>
+        <li>Clicks per program</li>
+        <li>Conversions</li>
+        <li>Revenue</li>
+        <li>EPC (Earnings per click)</li>
+      </ul>
+
+      <h2>Email Analytics (Brevo)</h2>
+      <p>Track in Brevo dashboard:</p>
+      <ul>
+        <li><strong>Open rate:</strong> Target >25%</li>
+        <li><strong>Click rate:</strong> Target >5%</li>
+        <li><strong>Subscribers:</strong> Growth over time</li>
+        <li><strong>Unsubscribe rate:</strong> Keep <1%</li>
+      </ul>
+
+      <h2>Social Media Analytics (Buffer)</h2>
+      <p>Track in Buffer dashboard:</p>
+      <ul>
+        <li><strong>Impressions:</strong> Post reach</li>
+        <li><strong>Engagement:</strong> Likes, comments, shares</li>
+        <li><strong>Link clicks:</strong> Traffic to blog</li>
+        <li><strong>Follower growth:</strong> Audience building</li>
+      </ul>
+
+      <h2>Weekly Review Checklist</h2>
+      <ul>
+        <li>□ Check GA4 traffic report</li>
+        <li>□ Review Search Console performance</li>
+        <li>□ Run <code>npm run api-stats</code> for affiliate data</li>
+        <li>□ Check Brevo email metrics</li>
+        <li>□ Review Buffer social metrics</li>
+        <li>□ Document insights and adjustments</li>
+      </ul>
+    </div>
+  </div>
+</article>
+
+<style>
+  .page-content {
+    padding: 80px 0;
+  }
+
+  .page-header {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .page-header h1 {
+    margin-bottom: 8px;
+  }
+
+  .page-meta {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  .post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+  }
+
+  .post-content th,
+  .post-content td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .post-content th {
+    background: var(--bg-secondary);
+    font-weight: 600;
+  }
+</style>
