@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    NoCode Launchpad - Dark Tech Theme
-   Inspired by Linear.app
+   Designed with Emil Kowalski's Design Engineering Principles
    ═══════════════════════════════════════════════════════════════ */
 
 /* Design System */
@@ -70,6 +70,16 @@
   --space-12: 48px;
   --space-16: 64px;
   --space-20: 80px;
+  
+  /* Transitions - Emil Kowalski: Specify exact properties, avoid `all` */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Animation Curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -125,7 +135,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--text-bright);
-  text-wrap: balance; /* Principle 10: Even distribution across lines */
+  text-wrap: balance;
 }
 
 h1 {
@@ -148,16 +158,16 @@ h4 {
 p {
   margin-bottom: 1.5em;
   color: var(--text-secondary);
-  text-wrap: pretty; /* Principle 10: Avoid orphan words */
+  text-wrap: pretty;
 }
 
-/* Principle 9: Cap the measure for readability */
+/* Cap the measure for readability */
 .prose,
 .post-content {
   max-width: 65ch;
 }
 
-/* Principle 11: Tabular numbers for changing values */
+/* Tabular numbers for changing values */
 .tabular-nums,
 [data-value] {
   font-variant-numeric: tabular-nums;
@@ -166,14 +176,14 @@ p {
 a {
   color: var(--color-cyan);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
   color: var(--color-cyan-dim);
 }
 
-/* Principle 14: Better underline styling for content links */
+/* Better underline styling for content links */
 .post-content a,
 .prose a {
   text-decoration: underline;
@@ -191,12 +201,7 @@ strong {
   color: var(--text-bright);
 }
 
-/* Principle 13: Smart punctuation styling */
-em {
-  font-style: italic;
-}
-
-/* Principle 8: Letter-spacing for small caps/labels */
+/* Letter-spacing for small caps/labels */
 .label,
 .caption {
   letter-spacing: 0.05em;
@@ -235,7 +240,7 @@ pre code {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Buttons
+   Buttons - Emil Kowalski: Must feel responsive to press
    ═══════════════════════════════════════════════════════════════ */
 
 .btn {
@@ -249,12 +254,15 @@ pre code {
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
-  transition: all 0.3s ease;
   cursor: pointer;
   border: none;
   line-height: 1;
   position: relative;
   overflow: hidden;
+  /* Emil Kowalski: Specify exact properties, avoid `all` */
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  /* Emil Kowalski: Performance optimization */
+  will-change: transform;
 }
 
 .btn-primary {
@@ -269,8 +277,9 @@ pre code {
   color: var(--bg-void);
 }
 
+/* Emil Kowalski: Buttons must feel responsive to press */
 .btn-primary:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.97);
 }
 
 .btn-secondary {
@@ -284,6 +293,10 @@ pre code {
   border-color: var(--border-glow);
   box-shadow: var(--glow-cyan);
   color: var(--text-bright);
+}
+
+.btn-secondary:active {
+  transform: scale(0.97);
 }
 
 .btn-sm {
@@ -300,8 +313,9 @@ pre code {
   width: 100%;
 }
 
+/* Emil Kowalski: Subtle icon animation on hover */
 .btn-icon {
-  transition: transform 0.2s;
+  transition: transform var(--transition-fast);
 }
 
 .btn:hover .btn-icon {
@@ -309,7 +323,21 @@ pre code {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Cards
+   Focus States - Emil Kowalski: Accessibility + Polish
+   ═══════════════════════════════════════════════════════════════ */
+
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Cards - Emil Kowalski: Unseen details compound
    ═══════════════════════════════════════════════════════════════ */
 
 .card {
@@ -317,8 +345,9 @@ pre code {
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-subtle);
   padding: var(--space-8);
-  transition: all 0.3s ease;
   position: relative;
+  /* Emil Kowalski: Specify exact properties */
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base), background var(--transition-base);
 }
 
 .card:hover {
@@ -439,7 +468,7 @@ pre code {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Hero Section
+   Hero Section - Emil Kowalski: Beauty is leverage
    ═══════════════════════════════════════════════════════════════ */
 
 .hero {
@@ -449,7 +478,7 @@ pre code {
   overflow: hidden;
 }
 
-/* Gradient orbs */
+/* Gradient orbs - Emil Kowalski: Subtle, not overwhelming */
 .hero::before {
   content: '';
   position: absolute;
@@ -459,6 +488,8 @@ pre code {
   height: 600px;
   background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
   pointer-events: none;
+  /* Emil Kowalski: Subtle animation for life */
+  animation: float 20s ease-in-out infinite;
 }
 
 .hero::after {
@@ -470,6 +501,12 @@ pre code {
   height: 600px;
   background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
   pointer-events: none;
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, 30px); }
 }
 
 .hero-content {
@@ -496,7 +533,7 @@ pre code {
   max-width: 540px;
   margin-bottom: var(--space-8);
   line-height: 1.7;
-  text-wrap: pretty; /* Principle 10: Avoid orphan words */
+  text-wrap: pretty;
 }
 
 .hero-actions {
@@ -555,7 +592,7 @@ pre code {
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-subtle);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .post-card:hover {
@@ -592,6 +629,7 @@ pre code {
   text-decoration: none;
   display: block;
   font-family: var(--font-heading);
+  transition: color var(--transition-fast);
 }
 
 .post-card-title:hover {
@@ -612,7 +650,7 @@ pre code {
 .post-content {
   font-size: 1.125rem;
   line-height: 1.8;
-  max-width: 65ch; /* Principle 9: Cap the measure */
+  max-width: 65ch;
 }
 
 .post-content h2 {
@@ -639,7 +677,7 @@ pre code {
 
 .post-content li {
   margin-bottom: 0.5em;
-  line-height: 1.6; /* Principle 7: Body copy needs 1.5-1.6 */
+  line-height: 1.6;
 }
 
 .post-content blockquote {
@@ -774,6 +812,11 @@ pre code {
   align-items: center;
   justify-content: center;
   margin: 0 auto var(--space-6);
+  transition: transform var(--transition-base);
+}
+
+.card:hover .tool-icon {
+  transform: scale(1.1);
 }
 
 .tool-card h3 {
@@ -822,7 +865,7 @@ pre code {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Animations
+   Animations - Emil Kowalski: ease-out for instant feedback
    ═══════════════════════════════════════════════════════════════ */
 
 @keyframes fadeInUp {
@@ -846,7 +889,7 @@ pre code {
 }
 
 .fade-in {
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeInUp 0.4s var(--ease-out-expo) forwards;
   opacity: 0;
 }
 
@@ -854,6 +897,17 @@ pre code {
 .fade-in:nth-child(2) { animation-delay: 0.2s; }
 .fade-in:nth-child(3) { animation-delay: 0.3s; }
 .fade-in:nth-child(4) { animation-delay: 0.4s; }
+
+/* Emil Kowalski: Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 /* ═══════════════════════════════════════════════════════════════
    Utility Classes

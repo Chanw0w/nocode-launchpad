@@ -1,5 +1,5 @@
 // Main JavaScript for NoCode Launchpad
-// Dark Tech Theme with Haptic Feedback
+// Designed with Emil Kowalski's Design Engineering Principles
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all components
@@ -10,19 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnimations();
   initHaptics();
   initAffiliateTracking();
+  initMagneticButtons();
+  initRippleEffect();
 });
 
 // ═══════════════════════════════════════════════════════════════
 // Haptic Feedback (Mobile)
+// Emil Kowalski: Unseen details compound
 // ═══════════════════════════════════════════════════════════════
 
 function initHaptics() {
-  // Check if Vibration API is supported
   const supportsVibration = 'vibrate' in navigator;
-  
   if (!supportsVibration) return;
   
-  // Haptic patterns
   const haptics = {
     light: () => navigator.vibrate(10),
     medium: () => navigator.vibrate(20),
@@ -32,7 +32,6 @@ function initHaptics() {
     selection: () => navigator.vibrate(5),
   };
   
-  // Add haptic feedback to buttons
   document.addEventListener('click', (e) => {
     const target = e.target.closest('.btn');
     if (!target) return;
@@ -44,7 +43,6 @@ function initHaptics() {
     }
   });
   
-  // Add haptic to mobile menu toggle
   const menuToggle = document.getElementById('mobile-menu-toggle');
   if (menuToggle) {
     menuToggle.addEventListener('click', () => {
@@ -52,12 +50,10 @@ function initHaptics() {
     });
   }
   
-  // Add haptic to form submissions
   document.addEventListener('submit', () => {
     haptics.success();
   });
   
-  // Store haptics globally for use in other scripts
   window.haptics = haptics;
 }
 
@@ -78,7 +74,6 @@ function initMobileMenu() {
     document.body.style.overflow = isOpen ? '' : 'hidden';
   });
   
-  // Close menu on link click
   const mobileLinks = mobileMenu.querySelectorAll('a');
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -91,6 +86,7 @@ function initMobileMenu() {
 
 // ═══════════════════════════════════════════════════════════════
 // Header Scroll Effect
+// Emil Kowalski: Subtle feedback
 // ═══════════════════════════════════════════════════════════════
 
 function initScrollHeader() {
@@ -140,6 +136,7 @@ function initSmoothScroll() {
 
 // ═══════════════════════════════════════════════════════════════
 // Newsletter Form
+// Emil Kowalski: Every detail compounds
 // ═══════════════════════════════════════════════════════════════
 
 function initNewsletterForm() {
@@ -153,7 +150,6 @@ function initNewsletterForm() {
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
       
-      // Disable button and show loading
       submitBtn.disabled = true;
       submitBtn.innerHTML = `
         <svg width="20" height="20" viewBox="0 0 20 20" class="spinner">
@@ -165,21 +161,16 @@ function initNewsletterForm() {
       `;
       
       try {
-        // Here you would typically send to your email service
-        // For now, we'll simulate a success
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-        // Show success
         submitBtn.innerHTML = '✓ Subscribed!';
         submitBtn.style.background = 'var(--color-green)';
         emailInput.value = '';
         
-        // Trigger success haptic
         if (window.haptics) {
           window.haptics.success();
         }
         
-        // Reset after 3 seconds
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
           submitBtn.style.background = '';
@@ -191,7 +182,6 @@ function initNewsletterForm() {
         submitBtn.innerHTML = 'Error - Try Again';
         submitBtn.style.background = 'var(--color-amber)';
         
-        // Trigger error haptic
         if (window.haptics) {
           window.haptics.error();
         }
@@ -208,10 +198,10 @@ function initNewsletterForm() {
 
 // ═══════════════════════════════════════════════════════════════
 // Animations
+// Emil Kowalski: Intersection Observer for reveal animations
 // ═══════════════════════════════════════════════════════════════
 
 function initAnimations() {
-  // Intersection Observer for fade-in animations
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -226,7 +216,6 @@ function initAnimations() {
     });
   }, observerOptions);
   
-  // Observe elements
   document.querySelectorAll('.card, .post-card, .feature-card, .tool-card').forEach(el => {
     el.style.opacity = '0';
     observer.observe(el);
@@ -234,20 +223,85 @@ function initAnimations() {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// Magnetic Buttons
+// Emil Kowalski: Unseen details compound
+// ═══════════════════════════════════════════════════════════════
+
+function initMagneticButtons() {
+  const buttons = document.querySelectorAll('.btn-primary');
+  
+  buttons.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0, 0)';
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Ripple Effect
+// Emil Kowalski: Physical feedback
+// ═══════════════════════════════════════════════════════════════
+
+function initRippleEffect() {
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const ripple = document.createElement('span');
+      const rect = this.getBoundingClientRect();
+      
+      ripple.style.cssText = `
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        animation: ripple 0.6s ease-out;
+      `;
+      
+      ripple.style.left = `${e.clientX - rect.left}px`;
+      ripple.style.top = `${e.clientY - rect.top}px`;
+      
+      this.appendChild(ripple);
+      
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+  
+  // Add ripple keyframes
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes ripple {
+      to {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+// ═══════════════════════════════════════════════════════════════
 // Affiliate Link Tracking
 // ═══════════════════════════════════════════════════════════════
 
 function initAffiliateTracking() {
-  // Track affiliate link clicks
   document.querySelectorAll('a[href*="pxf.io"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const url = link.href;
       const program = url.includes('base44') ? 'Base44' : 'Wix';
       
-      // Log to console (replace with analytics)
       console.log(`Affiliate click: ${program}`, url);
       
-      // Google Analytics event
       if (typeof gtag !== 'undefined') {
         gtag('event', 'affiliate_click', {
           'event_category': 'affiliate',
@@ -294,6 +348,8 @@ window.NoCodeLaunchpad = {
   initAnimations,
   initHaptics,
   initAffiliateTracking,
+  initMagneticButtons,
+  initRippleEffect,
   debounce,
   formatNumber
 };

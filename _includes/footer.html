@@ -140,7 +140,7 @@
     margin: 0 0 16px;
     letter-spacing: -0.02em;
     font-family: var(--font-heading);
-    text-wrap: balance; /* Principle 10: Even distribution */
+    text-wrap: balance;
   }
 
   .newsletter-description {
@@ -148,7 +148,7 @@
     line-height: 1.7;
     margin: 0 0 32px;
     color: var(--text-secondary);
-    text-wrap: pretty; /* Principle 10: Avoid orphan words */
+    text-wrap: pretty;
   }
 
   .newsletter-form {
@@ -166,7 +166,7 @@
     color: var(--text-bright);
     font-size: 1rem;
     font-family: var(--font-body);
-    transition: all 0.2s;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
   }
 
   .newsletter-input::placeholder {
@@ -245,7 +245,7 @@
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.9375rem;
-    transition: color 0.2s;
+    transition: color var(--transition-fast);
   }
 
   .footer-links a:hover {
@@ -284,7 +284,7 @@
     color: var(--text-muted);
     text-decoration: none;
     font-size: 0.875rem;
-    transition: color 0.2s;
+    transition: color var(--transition-fast);
   }
 
   .footer-legal a:hover {
