@@ -2,18 +2,11 @@
   <nav class="nav-container">
     <a href="{{ '/' | relative_url }}" class="site-logo">
       <span class="logo-icon">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <rect width="32" height="32" rx="8" fill="url(#logo-gradient)"/>
-          <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <defs>
-            <linearGradient id="logo-gradient" x1="0" y1="0" x2="32" y2="32">
-              <stop stop-color="#00d4ff"/>
-              <stop offset="1" stop-color="#ec4899"/>
-            </linearGradient>
-          </defs>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 0L20 5V15L10 20L0 15V5L10 0Z" fill="#FAFAC6"/>
         </svg>
       </span>
-      <span class="logo-text">NoCode Launchpad</span>
+      <span>NoCode Launchpad</span>
     </a>
     
     <div class="nav-links">
@@ -25,10 +18,10 @@
     </div>
     
     <div class="nav-actions">
-      <a href="#newsletter" class="btn btn-vibrant btn-sm">
+      <a href="#newsletter" class="btn btn-primary btn-sm">
         Get Free Guide
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
-          <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="btn-icon">
+          <path d="M5 10L9 7L5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
       
@@ -38,7 +31,6 @@
     </div>
   </nav>
   
-  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-content">
       <a href="{{ '/' | relative_url }}" class="mobile-nav-link active">Home</a>
@@ -46,216 +38,10 @@
       <a href="{{ '/reviews' | relative_url }}" class="mobile-nav-link">Reviews</a>
       <a href="{{ '/tools' | relative_url }}" class="mobile-nav-link">Tools</a>
       <a href="{{ '/blog' | relative_url }}" class="mobile-nav-link">Blog</a>
-      <a href="#newsletter" class="btn btn-vibrant btn-block">Get Free Guide</a>
+      <a href="#newsletter" class="btn btn-primary btn-block">Get Free Guide</a>
     </div>
   </div>
 </header>
-
-<style>
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(5, 5, 8, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-subtle);
-    transition: background var(--transition-fast), border-color var(--transition-fast);
-  }
-
-  .site-header.scrolled {
-    background: rgba(5, 5, 8, 0.95);
-    border-color: var(--border-light);
-  }
-
-  .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--space-6);
-    height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .site-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: var(--text-bright);
-    transition: transform var(--transition-fast);
-  }
-
-  .site-logo:active {
-    transform: scale(0.97);
-  }
-
-  .logo-icon {
-    display: flex;
-    animation: pulse-glow 3s ease-in-out infinite;
-  }
-
-  .logo-text {
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    font-family: var(--font-heading);
-  }
-
-  .nav-links {
-    display: none;
-    gap: 8px;
-  }
-
-  @media (min-width: 768px) {
-    .nav-links {
-      display: flex;
-    }
-  }
-
-  .nav-link {
-    text-decoration: none;
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: var(--radius-md);
-    transition: color var(--transition-fast), background var(--transition-fast);
-    position: relative;
-  }
-
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background: var(--gradient-vibrant);
-    border-radius: 1px;
-    transition: width var(--transition-base);
-  }
-
-  .nav-link:hover {
-    color: var(--text-bright);
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .nav-link:hover::after {
-    width: 20px;
-  }
-
-  .nav-link.active {
-    color: var(--color-cyan);
-    background: rgba(0, 212, 255, 0.1);
-  }
-
-  .nav-link.active::after {
-    width: 20px;
-    background: var(--color-cyan);
-  }
-
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-  }
-
-  .mobile-menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    border-radius: var(--radius-md);
-    transition: background var(--transition-fast);
-  }
-
-  .mobile-menu-toggle:hover {
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  @media (min-width: 768px) {
-    .mobile-menu-toggle {
-      display: none;
-    }
-  }
-
-  .hamburger {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--text-primary);
-    position: relative;
-    transition: background var(--transition-fast);
-  }
-
-  .hamburger::before,
-  .hamburger::after {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 2px;
-    background: var(--text-primary);
-    transition: transform var(--transition-fast);
-  }
-
-  .hamburger::before {
-    top: -7px;
-  }
-
-  .hamburger::after {
-    top: 7px;
-  }
-
-  .mobile-menu {
-    display: none;
-    background: rgba(5, 5, 8, 0.98);
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .mobile-menu.active {
-    display: block;
-  }
-
-  .mobile-menu-content {
-    padding: var(--space-6);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .mobile-nav-link {
-    text-decoration: none;
-    color: var(--text-primary);
-    font-size: 1.125rem;
-    font-weight: 500;
-    padding: var(--space-4);
-    border-radius: var(--radius-md);
-    transition: background var(--transition-fast), color var(--transition-fast);
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-  }
-
-  .mobile-nav-link:hover,
-  .mobile-nav-link.active {
-    background: rgba(0, 212, 255, 0.1);
-    color: var(--color-cyan);
-  }
-
-  @media (min-width: 768px) {
-    .mobile-menu {
-      display: none !important;
-    }
-  }
-</style>
 
 <script>
   const menuToggle = document.getElementById('mobile-menu-toggle');
@@ -269,19 +55,4 @@
       );
     });
   }
-
-  const header = document.getElementById('site-header');
-  let lastScroll = 0;
-  
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-  });
 </script>

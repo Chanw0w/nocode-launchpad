@@ -4,108 +4,93 @@ title: "Build Faster Without Code"
 description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best no-code platforms."
 ---
 
-<!-- Hero Section - Vibrant, portfolio-focused -->
+<!-- Hero Section -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-content fade-in">
-      <div class="hero-badge">
-        <span class="badge badge-vibrant">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M7 1L8.5 5L13 5.5L9.5 8.5L10.5 13L7 10.5L3.5 13L4.5 8.5L1 5.5L5.5 5L7 1Z" fill="currentColor"/>
-          </svg>
-          Trusted by 2,000+ Creators
-        </span>
-      </div>
-      
-      <h1>
-        Build Your App
-        <span class="text-gradient-vibrant">Without Writing Code</span>
-      </h1>
-      
-      <p class="hero-subtitle">
-        Step-by-step tutorials, honest reviews, and exclusive deals for Base44, Wix, 
-        and the tools that help you build faster.
-      </p>
-      
-      <div class="hero-actions">
-        <a href="#tutorials" class="btn btn-vibrant btn-lg">
-          Start Building
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="btn-icon">
-            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <a href="#portfolio" class="btn btn-secondary btn-lg">
-          View Portfolio
-        </a>
-      </div>
-      
-      <div class="hero-social-proof">
-        <div class="avatars">
-          <div class="avatar" style="background: var(--gradient-vibrant);">J</div>
-          <div class="avatar" style="background: var(--gradient-primary);">S</div>
-          <div class="avatar" style="background: var(--gradient-energy);">M</div>
-          <div class="avatar" style="background: linear-gradient(135deg, #fbbf24, #f97316);">A</div>
-        </div>
-        <p class="social-proof-text">
-          <strong>2,000+</strong> creators building with no-code tools
-        </p>
-      </div>
+  <div class="hero-badge">
+    <span class="badge">Trusted by 2,000+ Creators</span>
+  </div>
+  
+  <h1>Why NoCode Launchpad?</h1>
+  <p class="hero-subtitle">Excellence in every partnership — tutorials, reviews, and deals for the best no-code platforms.</p>
+  
+  <div class="hero-actions">
+    <a href="#tutorials" class="btn btn-primary btn-lg">
+      Start Building
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
+        <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <a href="#portfolio" class="btn btn-outline btn-lg">
+      View Portfolio
+    </a>
+  </div>
+  
+  <div class="hero-social-proof">
+    <div class="avatars">
+      <div class="avatar" style="background: #E1FB58; color: #111;">J</div>
+      <div class="avatar" style="background: #111; color: #FAFAC6;">S</div>
+      <div class="avatar" style="background: #333; color: #FAFAC6;">M</div>
+      <div class="avatar" style="background: #666; color: #FAFAC6;">A</div>
     </div>
+    <p class="social-proof-text">
+      <strong>2,000+</strong> creators building with no-code tools
+    </p>
   </div>
 </section>
 
-<!-- Stats Section - Portfolio achievements -->
-<section class="stats-section">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item fade-in">
-        <div class="stat-value">2,000+</div>
-        <div class="stat-label">Creators Building</div>
-      </div>
-      <div class="stat-item fade-in">
-        <div class="stat-value">50+</div>
-        <div class="stat-label">Tutorials Published</div>
-      </div>
-      <div class="stat-item fade-in">
-        <div class="stat-value">98%</div>
-        <div class="stat-label">Satisfaction Rate</div>
-      </div>
-      <div class="stat-item fade-in">
-        <div class="stat-value">$0</div>
-        <div class="stat-label">To Get Started</div>
-      </div>
+<!-- Stats Section -->
+<section class="stats-section" id="benefits">
+  <div class="stats-grid">
+    <div class="stat-card fade-in">
+      <div class="stat-icon"></div>
+      <div class="stat-number">15%</div>
+      <div class="stat-label">Commissions on sales</div>
     </div>
+    <div class="stat-card fade-in">
+      <div class="stat-icon"></div>
+      <div class="stat-number">35%</div>
+      <div class="stat-label">Retention rate</div>
+    </div>
+    <div class="stat-card fade-in">
+      <div class="stat-icon"></div>
+      <div class="stat-number">70%</div>
+      <div class="stat-label">Increase in conversion rates</div>
+    </div>
+  </div>
+
+  <div class="cta-container" style="text-align: center; margin-top: 40px;">
+    <a href="#newsletter" class="btn btn-primary btn-lg">Join Us Today</a>
   </div>
 </section>
 
-<!-- Portfolio Section - Project showcase -->
-<section class="section portfolio-section" id="portfolio">
+<!-- Portfolio Section -->
+<section class="section" id="portfolio">
   <div class="container">
     <div class="section-header">
-      <span class="badge badge-vibrant">Portfolio</span>
+      <span class="badge">Portfolio</span>
       <h2>Featured Projects</h2>
       <p>Explore our latest no-code projects and success stories.</p>
     </div>
     
-    <div class="portfolio-grid">
+    <div class="grid grid-2">
       {% for post in site.posts limit:4 %}
       <article class="portfolio-card fade-in">
         {% if post.image %}
         <img src="{{ post.image }}" alt="{{ post.title }}" class="portfolio-card-image">
         {% else %}
-        <div class="portfolio-card-image" style="background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));"></div>
+        <div class="portfolio-card-image" style="background: linear-gradient(135deg, var(--bg-alt), var(--card));"></div>
         {% endif %}
         <div class="portfolio-card-content">
           <div class="portfolio-card-meta">
-            <span class="badge badge-primary">{{ post.categories | first | default: "Project" }}</span>
+            <span class="badge badge-outline">{{ post.categories | first | default: "Project" }}</span>
             <span>{{ post.date | date: "%b %d, %Y" }}</span>
           </div>
           <a href="{{ post.url | relative_url }}" class="portfolio-card-title">{{ post.title }}</a>
           <p class="portfolio-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-          <a href="{{ post.url | relative_url }}" class="btn btn-secondary btn-sm">
+          <a href="{{ post.url | relative_url }}" class="btn btn-outline btn-sm">
             View Project
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
-              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="btn-icon">
+              <path d="M5 10L9 7L5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
         </div>
@@ -116,75 +101,73 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
     <div class="text-center mt-8">
       <a href="{{ '/tutorials' | relative_url }}" class="btn btn-secondary">
         View All Projects
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
-          <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="btn-icon">
+          <path d="M5 10L9 7L5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- Tools Section - Vibrant cards -->
-<section class="section" id="tools">
+<!-- Tools Section -->
+<section class="section section-alt" id="tools">
   <div class="container">
     <div class="section-header">
-      <span class="badge badge-energy">Tools</span>
+      <span class="badge">Tools</span>
       <h2>Recommended Platforms</h2>
       <p>The best no-code tools to supercharge your workflow.</p>
     </div>
     
     <div class="grid grid-3">
       <div class="card tool-card fade-in">
-        <div class="tool-icon" style="background: var(--gradient-vibrant);">
+        <div class="tool-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#FAFAC6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="#FAFAC6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#FAFAC6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <h3>Base44</h3>
         <p>Build full-stack web apps visually. Perfect for SaaS and MVPs.</p>
         <a href="https://base44.pxf.io/c/7105524/2049275/25619?trafcat=lp" class="btn btn-primary btn-sm" target="_blank" rel="noopener sponsored">
           Try Base44
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M12 4L4 12M12 4H6M12 4V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M10 3L4 9M10 3H5M10 3V8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
       </div>
       
       <div class="card tool-card fade-in">
-        <div class="tool-icon" style="background: var(--gradient-primary);">
+        <div class="tool-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="white" stroke-width="2"/>
-            <path d="M2 12H22" stroke="white" stroke-width="2"/>
-            <path d="M12 2C14.5 4.5 16 8 16 12C16 16 14.5 19.5 12 22C9.5 19.5 8 16 8 12C8 8 9.5 4.5 12 2Z" stroke="white" stroke-width="2"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="#FAFAC6" stroke-width="2"/>
+            <path d="M2 12H22" stroke="#FAFAC6" stroke-width="2"/>
+            <path d="M12 2C14.5 4.5 16 8 16 12C16 16 14.5 19.5 12 22C9.5 19.5 8 16 8 12C8 8 9.5 4.5 12 2Z" stroke="#FAFAC6" stroke-width="2"/>
           </svg>
         </div>
         <h3>Wix</h3>
         <p>Professional websites with drag-and-drop. 500+ templates included.</p>
         <a href="https://wix.pxf.io/c/7105524/2049257/25616?trafcat=wsb" class="btn btn-secondary btn-sm" target="_blank" rel="noopener sponsored">
           Try Wix
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M12 4L4 12M12 4H6M12 4V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M10 3L4 9M10 3H5M10 3V8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
       </div>
       
       <div class="card tool-card fade-in">
-        <div class="tool-icon" style="background: var(--gradient-energy);">
+        <div class="tool-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 2V8H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 13H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 17H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="#FAFAC6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 2V8H20" stroke="#FAFAC6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <h3>Free Guide</h3>
         <p>Launch your first no-code app in 7 days with our step-by-step playbook.</p>
-        <a href="#newsletter" class="btn btn-secondary btn-sm">
+        <a href="#newsletter" class="btn btn-outline btn-sm">
           Get Free Guide
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M5 10L9 7L5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
       </div>
@@ -193,10 +176,10 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
 </section>
 
 <!-- Testimonials Section -->
-<section class="testimonials-section">
+<section class="section" id="testimonials">
   <div class="container">
     <div class="section-header">
-      <span class="badge badge-primary">Testimonials</span>
+      <span class="badge">Testimonials</span>
       <h2>What Creators Say</h2>
       <p>Hear from our community of no-code builders.</p>
     </div>
@@ -245,10 +228,10 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
 </section>
 
 <!-- Latest Posts -->
-<section class="section" id="blog">
+<section class="section section-alt" id="blog">
   <div class="container">
     <div class="section-header">
-      <span class="badge badge-primary">Blog</span>
+      <span class="badge">Blog</span>
       <h2>Latest Articles</h2>
       <p>Tips, tricks, and insights from the no-code world.</p>
     </div>
@@ -259,7 +242,7 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
         {% if post.image %}
         <img src="{{ post.image }}" alt="{{ post.title }}" class="portfolio-card-image">
         {% else %}
-        <div class="portfolio-card-image" style="background: linear-gradient(135deg, var(--color-purple), var(--color-pink));"></div>
+        <div class="portfolio-card-image" style="background: linear-gradient(135deg, var(--border), var(--gray));"></div>
         {% endif %}
         <div class="portfolio-card-content">
           <div class="portfolio-card-meta">
@@ -277,28 +260,28 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
     <div class="text-center mt-8">
       <a href="{{ '/blog' | relative_url }}" class="btn btn-secondary">
         View All Posts
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
-          <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="btn-icon">
+          <path d="M5 10L9 7L5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- CTA Section - Vibrant call-to-action -->
+<!-- CTA Section -->
 <section class="cta-section">
   <div class="container">
     <div class="cta-content">
       <h2>Ready to Build Without Code?</h2>
       <p>Join 2,000+ creators who are launching profitable apps with no-code tools.</p>
       <div class="cta-actions">
-        <a href="#newsletter" class="btn btn-vibrant btn-lg">
+        <a href="#newsletter" class="btn btn-primary btn-lg">
           Get Started Free
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="btn-icon">
-            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
+            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <a href="/tutorials" class="btn btn-secondary btn-lg">
+        <a href="/tutorials" class="btn btn-outline btn-lg">
           Browse Tutorials
         </a>
       </div>
