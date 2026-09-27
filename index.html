@@ -4,12 +4,12 @@ title: "Build Faster Without Code"
 description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best no-code platforms."
 ---
 
-<!-- Hero Section -->
+<!-- Hero Section - Vibrant, portfolio-focused -->
 <section class="hero">
   <div class="container">
     <div class="hero-content fade-in">
       <div class="hero-badge">
-        <span class="badge badge-primary">
+        <span class="badge badge-vibrant">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M7 1L8.5 5L13 5.5L9.5 8.5L10.5 13L7 10.5L3.5 13L4.5 8.5L1 5.5L5.5 5L7 1Z" fill="currentColor"/>
           </svg>
@@ -18,8 +18,8 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
       </div>
       
       <h1>
-        Launch Your App
-        <span class="text-gradient">Without Writing Code</span>
+        Build Your App
+        <span class="text-gradient-vibrant">Without Writing Code</span>
       </h1>
       
       <p class="hero-subtitle">
@@ -28,23 +28,23 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
       </p>
       
       <div class="hero-actions">
-        <a href="#tutorials" class="btn btn-primary btn-lg">
-          Start Learning
+        <a href="#tutorials" class="btn btn-vibrant btn-lg">
+          Start Building
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="btn-icon">
             <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <a href="#reviews" class="btn btn-secondary btn-lg">
-          Read Reviews
+        <a href="#portfolio" class="btn btn-secondary btn-lg">
+          View Portfolio
         </a>
       </div>
       
       <div class="hero-social-proof">
         <div class="avatars">
-          <div class="avatar" style="background: #00d4ff;">J</div>
-          <div class="avatar" style="background: #7c3aed;">S</div>
-          <div class="avatar" style="background: #00ff88;">M</div>
-          <div class="avatar" style="background: #fbbf24;">A</div>
+          <div class="avatar" style="background: var(--gradient-vibrant);">J</div>
+          <div class="avatar" style="background: var(--gradient-primary);">S</div>
+          <div class="avatar" style="background: var(--gradient-energy);">M</div>
+          <div class="avatar" style="background: linear-gradient(135deg, #fbbf24, #f97316);">A</div>
         </div>
         <p class="social-proof-text">
           <strong>2,000+</strong> creators building with no-code tools
@@ -54,87 +54,56 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
   </div>
 </section>
 
-<style>
-  .hero-badge {
-    margin-bottom: var(--space-6);
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    max-width: 540px;
-    margin-bottom: var(--space-8);
-  }
-  
-  .hero-social-proof {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    margin-top: var(--space-12);
-    padding-top: var(--space-8);
-    border-top: 1px solid var(--border-light);
-  }
-  
-  .avatars {
-    display: flex;
-    -space: -8px;
-  }
-  
-  .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 600;
-    font-size: 0.875rem;
-    border: 3px solid white;
-    margin-left: -8px;
-  }
-  
-  .avatar:first-child {
-    margin-left: 0;
-  }
-  
-  .social-proof-text {
-    font-size: 0.9375rem;
-    color: var(--text-secondary);
-    margin: 0;
-  }
-  
-  .social-proof-text strong {
-    color: var(--text-primary);
-  }
-</style>
+<!-- Stats Section - Portfolio achievements -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-in">
+        <div class="stat-value">2,000+</div>
+        <div class="stat-label">Creators Building</div>
+      </div>
+      <div class="stat-item fade-in">
+        <div class="stat-value">50+</div>
+        <div class="stat-label">Tutorials Published</div>
+      </div>
+      <div class="stat-item fade-in">
+        <div class="stat-value">98%</div>
+        <div class="stat-label">Satisfaction Rate</div>
+      </div>
+      <div class="stat-item fade-in">
+        <div class="stat-value">$0</div>
+        <div class="stat-label">To Get Started</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Featured Tutorials -->
-<section class="section" id="tutorials">
+<!-- Portfolio Section - Project showcase -->
+<section class="section portfolio-section" id="portfolio">
   <div class="container">
     <div class="section-header">
-      <span class="badge badge-primary">Tutorials</span>
-      <h2>Learn to Build Without Code</h2>
-      <p>Step-by-step guides to help you launch your first no-code project.</p>
+      <span class="badge badge-vibrant">Portfolio</span>
+      <h2>Featured Projects</h2>
+      <p>Explore our latest no-code projects and success stories.</p>
     </div>
     
-    <div class="grid grid-3">
-      {% for post in site.posts limit:3 %}
-      <article class="post-card">
+    <div class="portfolio-grid">
+      {% for post in site.posts limit:4 %}
+      <article class="portfolio-card fade-in">
         {% if post.image %}
-        <img src="{{ post.image }}" alt="{{ post.title }}" class="post-card-image">
+        <img src="{{ post.image }}" alt="{{ post.title }}" class="portfolio-card-image">
         {% else %}
-        <div class="post-card-image" style="background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);"></div>
+        <div class="portfolio-card-image" style="background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));"></div>
         {% endif %}
-        <div class="post-card-content">
-          <div class="post-card-meta">
-            <span class="badge badge-primary">{{ post.categories | first | default: "Tutorial" }}</span>
+        <div class="portfolio-card-content">
+          <div class="portfolio-card-meta">
+            <span class="badge badge-primary">{{ post.categories | first | default: "Project" }}</span>
             <span>{{ post.date | date: "%b %d, %Y" }}</span>
           </div>
-          <a href="{{ post.url | relative_url }}" class="post-card-title">{{ post.title }}</a>
-          <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+          <a href="{{ post.url | relative_url }}" class="portfolio-card-title">{{ post.title }}</a>
+          <p class="portfolio-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
           <a href="{{ post.url | relative_url }}" class="btn btn-secondary btn-sm">
-            Read Tutorial
+            View Project
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
               <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -146,7 +115,7 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
     
     <div class="text-center mt-8">
       <a href="{{ '/tutorials' | relative_url }}" class="btn btn-secondary">
-        View All Tutorials
+        View All Projects
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
           <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -155,137 +124,18 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
   </div>
 </section>
 
-<!-- Featured Reviews -->
-<section class="section section-sm" style="background: var(--bg-secondary);" id="reviews">
-  <div class="container">
-    <div class="section-header">
-      <span class="badge badge-primary">Reviews</span>
-      <h2>Honest Platform Reviews</h2>
-      <p>In-depth analysis of the best no-code platforms to help you choose.</p>
-    </div>
-    
-    <div class="grid grid-2">
-      <!-- Base44 Review Card -->
-      <div class="card card-featured">
-        <div class="review-header">
-          <span class="badge badge-warning">Editor's Pick</span>
-          <div class="rating">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="rating-text">5.0</span>
-          </div>
-        </div>
-        <h3>Base44 Review</h3>
-        <p>Build full-stack web applications without code. Perfect for SaaS startups and MVPs.</p>
-        <ul class="feature-list">
-          <li>✓ Visual app builder</li>
-          <li>✓ Built-in database</li>
-          <li>✓ One-click deployment</li>
-        </ul>
-        <a href="/reviews/base44" class="btn btn-primary">
-          Read Full Review
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
-            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-      
-      <!-- Wix Review Card -->
-      <div class="card">
-        <div class="review-header">
-          <span class="badge badge-success">Popular</span>
-          <div class="rating">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star empty">★</span>
-            <span class="rating-text">4.5</span>
-          </div>
-        </div>
-        <h3>Wix Review</h3>
-        <p>The most popular website builder with drag-and-drop simplicity and professional templates.</p>
-        <ul class="feature-list">
-          <li>✓ 500+ templates</li>
-          <li>✓ App market</li>
-          <li>✓ SEO tools</li>
-        </ul>
-        <a href="/reviews/wix" class="btn btn-secondary">
-          Read Full Review
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="btn-icon">
-            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-  .review-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--space-4);
-  }
-  
-  .rating {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  
-  .star {
-    color: #fbbf24;
-    font-size: 1.25rem;
-  }
-  
-  .star.empty {
-    color: rgba(255, 255, 255, 0.3);
-  }
-  
-  .rating-text {
-    margin-left: 8px;
-    font-weight: 700;
-    font-size: 1.125rem;
-  }
-  
-  .feature-list {
-    list-style: none;
-    padding: 0;
-    margin: var(--space-6) 0;
-  }
-  
-  .feature-list li {
-    padding: var(--space-2) 0;
-    font-size: 0.9375rem;
-    color: rgba(255, 255, 255, 0.9);
-  }
-  
-  .card:not(.card-featured) .feature-list li {
-    color: var(--text-secondary);
-  }
-  
-  .card:not(.card-featured) .rating-text {
-    color: var(--text-primary);
-  }
-</style>
-
-<!-- Tools Section -->
+<!-- Tools Section - Vibrant cards -->
 <section class="section" id="tools">
   <div class="container">
     <div class="section-header">
-      <span class="badge badge-primary">Tools</span>
-      <h2>Recommended Tools</h2>
-      <p>The best tools to supercharge your no-code workflow.</p>
+      <span class="badge badge-energy">Tools</span>
+      <h2>Recommended Platforms</h2>
+      <p>The best no-code tools to supercharge your workflow.</p>
     </div>
     
     <div class="grid grid-3">
-      <div class="card tool-card">
-        <div class="tool-icon" style="background: linear-gradient(135deg, #00d4ff, #7c3aed);">
+      <div class="card tool-card fade-in">
+        <div class="tool-icon" style="background: var(--gradient-vibrant);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -294,7 +144,7 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
         </div>
         <h3>Base44</h3>
         <p>Build full-stack web apps visually. Perfect for SaaS and MVPs.</p>
-        <a href="https://base44.pxf.io/c/7105524/2049275/25619?trafcat=lp" class="btn btn-secondary btn-sm" target="_blank" rel="noopener sponsored">
+        <a href="https://base44.pxf.io/c/7105524/2049275/25619?trafcat=lp" class="btn btn-primary btn-sm" target="_blank" rel="noopener sponsored">
           Try Base44
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M12 4L4 12M12 4H6M12 4V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -302,8 +152,8 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
         </a>
       </div>
       
-      <div class="card tool-card">
-        <div class="tool-icon" style="background: linear-gradient(135deg, #7c3aed, #00d4ff);">
+      <div class="card tool-card fade-in">
+        <div class="tool-icon" style="background: var(--gradient-primary);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="white" stroke-width="2"/>
             <path d="M2 12H22" stroke="white" stroke-width="2"/>
@@ -320,14 +170,13 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
         </a>
       </div>
       
-      <div class="card tool-card">
-        <div class="tool-icon" style="background: linear-gradient(135deg, #00ff88, #00d4ff);">
+      <div class="card tool-card fade-in">
+        <div class="tool-icon" style="background: var(--gradient-energy);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M14 2V8H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M16 13H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M16 17H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 9H9H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <h3>Free Guide</h3>
@@ -343,30 +192,57 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
   </div>
 </section>
 
-<style>
-  .tool-card {
-    text-align: center;
-  }
-  
-  .tool-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto var(--space-6);
-  }
-  
-  .tool-card h3 {
-    margin-bottom: var(--space-3);
-  }
-  
-  .tool-card p {
-    margin-bottom: var(--space-6);
-    font-size: 0.9375rem;
-  }
-</style>
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-primary">Testimonials</span>
+      <h2>What Creators Say</h2>
+      <p>Hear from our community of no-code builders.</p>
+    </div>
+    
+    <div class="grid grid-3">
+      <div class="testimonial-card fade-in">
+        <p class="testimonial-text">
+          "NoCode Launchpad helped me launch my SaaS MVP in just 2 weeks. The tutorials are clear and the tools are amazing."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">J</div>
+          <div>
+            <div class="testimonial-name">Jamie Chen</div>
+            <div class="testimonial-role">SaaS Founder</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card fade-in">
+        <p class="testimonial-text">
+          "The Base44 review convinced me to switch from traditional coding. I'm 10x more productive now."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div>
+            <div class="testimonial-name">Sarah Miller</div>
+            <div class="testimonial-role">Product Manager</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card fade-in">
+        <p class="testimonial-text">
+          "Best no-code resource out there. The free guide alone saved me months of trial and error."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Marcus Johnson</div>
+            <div class="testimonial-role">Entrepreneur</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Latest Posts -->
 <section class="section" id="blog">
@@ -379,20 +255,20 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
     
     <div class="grid grid-2">
       {% for post in site.posts limit:4 %}
-      <article class="post-card post-card-horizontal">
+      <article class="portfolio-card fade-in">
         {% if post.image %}
-        <img src="{{ post.image }}" alt="{{ post.title }}" class="post-card-image">
+        <img src="{{ post.image }}" alt="{{ post.title }}" class="portfolio-card-image">
         {% else %}
-        <div class="post-card-image" style="background: linear-gradient(135deg, #7c3aed 0%, #00ff88 100%);"></div>
+        <div class="portfolio-card-image" style="background: linear-gradient(135deg, var(--color-purple), var(--color-pink));"></div>
         {% endif %}
-        <div class="post-card-content">
-          <div class="post-card-meta">
+        <div class="portfolio-card-content">
+          <div class="portfolio-card-meta">
             <span>{{ post.date | date: "%b %d, %Y" }}</span>
             <span>•</span>
             <span>{{ post.content | reading_time }} min read</span>
           </div>
-          <a href="{{ post.url | relative_url }}" class="post-card-title">{{ post.title }}</a>
-          <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 15 }}</p>
+          <a href="{{ post.url | relative_url }}" class="portfolio-card-title">{{ post.title }}</a>
+          <p class="portfolio-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 15 }}</p>
         </div>
       </article>
       {% endfor %}
@@ -409,28 +285,14 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
   </div>
 </section>
 
-<style>
-  @media (min-width: 768px) {
-    .post-card-horizontal {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-    }
-    
-    .post-card-horizontal .post-card-image {
-      height: 100%;
-      min-height: 200px;
-    }
-  }
-</style>
-
-<!-- CTA Section -->
-<section class="section cta-section">
+<!-- CTA Section - Vibrant call-to-action -->
+<section class="cta-section">
   <div class="container">
     <div class="cta-content">
       <h2>Ready to Build Without Code?</h2>
       <p>Join 2,000+ creators who are launching profitable apps with no-code tools.</p>
       <div class="cta-actions">
-        <a href="#newsletter" class="btn btn-primary btn-lg">
+        <a href="#newsletter" class="btn btn-vibrant btn-lg">
           Get Started Free
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="btn-icon">
             <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -443,48 +305,3 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
     </div>
   </div>
 </section>
-
-<style>
-  .cta-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    text-align: center;
-    border-radius: var(--radius-xl);
-    margin: 0 var(--space-6);
-    padding: var(--space-20) var(--space-8);
-  }
-  
-  .cta-content {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .cta-section h2 {
-    color: white;
-    margin-bottom: var(--space-4);
-  }
-  
-  .cta-section p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.25rem;
-    margin-bottom: var(--space-8);
-  }
-  
-  .cta-actions {
-    display: flex;
-    gap: var(--space-4);
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .cta-actions .btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-  }
-  
-  .cta-actions .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.3);
-    color: white;
-  }
-</style>
