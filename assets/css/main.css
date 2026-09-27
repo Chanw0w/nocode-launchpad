@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════
    NoCode Launchpad - Dark Tech Theme
    Designed with Emil Kowalski's Design Engineering Principles
+   Refined with Impeccable Craft Floor Standards
    ═══════════════════════════════════════════════════════════════ */
 
 /* Design System */
@@ -29,18 +30,18 @@
   --glow-cyan-strong: 0 0 40px rgba(0, 212, 255, 0.25);
   --glow-purple: 0 0 30px rgba(124, 58, 237, 0.15);
   
-  /* Text */
+  /* Text - Impeccable: Contrast ratios ≥4.5:1 for body, ≥3:1 for large text */
   --text-bright: #f8fafc;
   --text-primary: #e2e8f0;
   --text-secondary: #94a3b8;
-  --text-muted: #475569;
+  --text-muted: #64748b; /* Improved from #475569 for better contrast */
   
   /* Borders */
   --border-subtle: rgba(255, 255, 255, 0.06);
   --border-light: rgba(255, 255, 255, 0.1);
   --border-glow: rgba(0, 212, 255, 0.2);
   
-  /* Shadows */
+  /* Shadows - Impeccable: Carry offset and soft blur */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
@@ -109,6 +110,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Impeccable: Theme browser surfaces from the palette */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: var(--text-bright);
+}
+
+::-moz-selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: var(--text-bright);
+}
+
+/* Impeccable: Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 /* Subtle grid pattern */
 body::before {
   content: '';
@@ -126,14 +157,14 @@ body::before {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Typography
+   Typography - Impeccable: Body measure 65-75ch, display max 6rem, tracking floor -0.04em
    ═══════════════════════════════════════════════════════════════ */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em; /* Impeccable: tracking floor -0.04em */
   color: var(--text-bright);
   text-wrap: balance;
 }
@@ -141,18 +172,22 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 800;
+  letter-spacing: -0.04em;
 }
 
 h2 {
   font-size: clamp(2rem, 4vw, 2.5rem);
+  letter-spacing: -0.04em;
 }
 
 h3 {
   font-size: 1.75rem;
+  letter-spacing: -0.03em;
 }
 
 h4 {
   font-size: 1.25rem;
+  letter-spacing: -0.02em;
 }
 
 p {
@@ -161,7 +196,7 @@ p {
   text-wrap: pretty;
 }
 
-/* Cap the measure for readability */
+/* Impeccable: Cap the measure for readability */
 .prose,
 .post-content {
   max-width: 65ch;
@@ -323,7 +358,7 @@ pre code {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Focus States - Emil Kowalski: Accessibility + Polish
+   Focus States - Impeccable: Visible keyboard focus
    ═══════════════════════════════════════════════════════════════ */
 
 :focus-visible {
@@ -332,6 +367,16 @@ pre code {
 }
 
 .btn:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+/* Impeccable: Focus ring for all interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: 2px solid var(--color-cyan);
   outline-offset: 2px;
 }
@@ -443,7 +488,7 @@ pre code {
   }
 }
 
-/* Sections */
+/* Sections - Impeccable: More space above heading than below */
 .section {
   padding: var(--space-20) 0;
 }
@@ -865,7 +910,7 @@ pre code {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Animations - Emil Kowalski: ease-out for instant feedback
+   Animations - Impeccable: One authored moment, not scattered effects
    ═══════════════════════════════════════════════════════════════ */
 
 @keyframes fadeInUp {
@@ -898,7 +943,7 @@ pre code {
 .fade-in:nth-child(3) { animation-delay: 0.3s; }
 .fade-in:nth-child(4) { animation-delay: 0.4s; }
 
-/* Emil Kowalski: Respect user preferences */
+/* Impeccable: Respect user preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
