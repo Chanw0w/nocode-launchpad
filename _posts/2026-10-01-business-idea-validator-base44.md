@@ -5,7 +5,7 @@ date: 2026-10-01 00:00:00 +0000
 categories: [tutorials, base44, entrepreneur]
 tags: [base44, validation, startup, entrepreneur, no-code]
 excerpt: "Stop guessing if your business idea will work. Build a validation tool that guides you through market research, competitor analysis, and scoring — in 30 minutes."
-image: /assets/images/idea-validator.jpg
+image: /assets/images/app-screenshots/idea-validator-landing-viewport.jpg
 author: Your Name
 affiliate:
   title: "Try Base44 Free"
@@ -32,9 +32,19 @@ What if you could build a validation tool that guides you through the entire pro
 
 I created a **Business Idea Validator** — a guided tool that walks aspiring entrepreneurs through validating their business idea before they invest time or money.
 
+[**Try the live app →**](https://idea-validator-5b8fdb02.base44.app/)
+
+![Idea Validator — Landing Page](/assets/images/app-screenshots/idea-validator-landing-viewport.jpg)
+
+### Design
+
+The app uses a **calm, premium aesthetic** — light backgrounds, serif headlines with mixed weight, soft rounded cards, and black pill buttons. It feels like a high-end productivity tool, not a typical no-code app.
+
 ### How It Works
 
 The validator takes users through 6 steps:
+
+![Idea Validator — Wizard Step 1](/assets/images/app-screenshots/idea-validator-wizard.jpg)
 
 **Step 1: Describe Your Idea**
 - Free-text input: "What does your business do?"
@@ -69,6 +79,8 @@ Based on your scores, the validator generates:
 - If validated: "Build your MVP with Base44 →"
 - If not validated: "Here's what to fix before building"
 
+![Idea Validator — Dashboard](/assets/images/app-screenshots/idea-validator-dashboard.jpg)
+
 ### What Makes This Powerful
 
 The validator doesn't just give you a score. It:
@@ -76,6 +88,7 @@ The validator doesn't just give you a score. It:
 - Suggests competitors you might have missed
 - Identifies blind spots in your thinking
 - Provides actionable next steps
+- Saves your validation history in a clean dashboard
 
 ## How Base44 Made It Easy
 
