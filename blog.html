@@ -15,8 +15,11 @@ description: "Tips, tricks, and insights from the no-code world."
 <section class="section">
   <div class="container">
     <div class="grid grid-2">
+      {% assign colors = "card-yellow,card-green,card-cyan" | split: "," %}
       {% for post in site.posts %}
-      <article class="portfolio-card fade-in">
+      {% assign color_index = forloop.index0 | modulo: colors.size %}
+      {% assign card_color = colors[color_index] %}
+      <article class="portfolio-card {{ card_color }} fade-in">
         {% if post.image %}
         <img src="{{ post.image }}" alt="{{ post.title }}" class="portfolio-card-image">
         {% else %}
