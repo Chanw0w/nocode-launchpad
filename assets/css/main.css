@@ -1080,7 +1080,6 @@ pre code {
   border-top: 3px solid rgba(255, 255, 255, 0.2);
 }
 
-@media (min-width: 768px) {
 .footer-disclosure {
   padding: var(--space-6);
   border-top: 3px solid rgba(255, 255, 255, 0.2);
@@ -1098,7 +1097,8 @@ pre code {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.footer-bottom {
+@media (min-width: 768px) {
+  .footer-bottom {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
