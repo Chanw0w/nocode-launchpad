@@ -26,11 +26,11 @@ description: "Tips, tricks, and insights from the no-code world."
           <div class="portfolio-card-meta">
             <span class="badge badge-outline">{{ post.categories | first | default: "POST" }}</span>
             <span>{{ post.date | date: "%b %d, %Y" }}</span>
-            <span>•</span>
-            <span>{{ post.content | reading_time }} MIN READ</span>
           </div>
           <a href="{{ post.url | relative_url }}" class="portfolio-card-title">{{ post.title }}</a>
+          {% if post.excerpt %}
           <p class="portfolio-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+          {% endif %}
           <a href="{{ post.url | relative_url }}" class="btn btn-outline btn-sm">
             READ MORE →
           </a>

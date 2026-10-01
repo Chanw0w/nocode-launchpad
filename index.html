@@ -235,20 +235,17 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
         <div class="portfolio-card-image" style="background: linear-gradient(135deg, #E0E0E0, #C0C0C0);"></div>
         {% endif %}
         <div class="portfolio-card-content">
-          <div class="portfolio-card-meta">
-            <span>{{ post.date | date: "%b %d, %Y" }}</span>
-            <span>•</span>
-            <span>{{ post.content | reading_time }} MIN READ</span>
-          </div>
           <a href="{{ post.url | relative_url }}" class="portfolio-card-title">{{ post.title }}</a>
-          <p class="portfolio-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 15 }}</p>
+          <a href="{{ '/blog/' | relative_url }}" class="btn btn-outline btn-sm">
+            READ MORE →
+          </a>
         </div>
       </article>
       {% endfor %}
     </div>
     
     <div class="text-center mt-8">
-      <a href="{{ '/blog' | relative_url }}" class="btn btn-secondary">
+      <a href="{{ '/blog/' | relative_url }}" class="btn btn-secondary">
         VIEW ALL POSTS →
       </a>
     </div>
