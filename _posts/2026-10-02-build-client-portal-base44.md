@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "I Built a Client Portal That Replaced My $200/Month SaaS"
-date: 2026-10-02 10:00:00 +0000
+date: 2026-10-01 12:00:00 +0000
 categories: [tutorials, base44, freelancer]
 tags: [base44, client-portal, freelancer, saas, no-code]
 excerpt: "I was paying $200/month for a client portal tool. Built my own in an afternoon with Base44 — and my clients love it more."
