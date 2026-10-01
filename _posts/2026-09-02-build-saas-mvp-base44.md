@@ -231,6 +231,7 @@ Once your MVP is live:
 
 ## Related Tutorials
 
-- [Base44 Review: Is It Right for You?](/reviews/base44)
-- [How to Add Payments to Your Base44 App](/tutorials/base44-payments)
-- [5 SaaS Ideas You Can Build Without Code](/blog/saas-ideas-no-code)
+- [Base44 Review: Is It Right for You?]({{ '/base44-review/' | relative_url }})
+- [How to Build a SaaS MVP Calculator in 2 Hours with Base44]({{ '/build-saas-mvp-calculator-base44/' | relative_url }})
+- [How to Build a Client Portal with Base44]({{ '/build-client-portal-base44/' | relative_url }})
+- [The No-Code Business Idea Validator I Built]({{ '/business-idea-validator-base44/' | relative_url }})
