@@ -1081,7 +1081,24 @@ pre code {
 }
 
 @media (min-width: 768px) {
-  .footer-bottom {
+.footer-disclosure {
+  padding: var(--space-6);
+  border-top: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-disclosure p {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  text-transform: none;
+  line-height: 1.6;
+}
+
+.footer-disclosure strong {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-bottom {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
