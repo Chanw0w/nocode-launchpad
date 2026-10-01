@@ -1,0 +1,62 @@
+---
+layout: default
+title: "Tutorials"
+description: "Step-by-step guides to help you launch your first no-code project."
+---
+
+<section class="hero">
+  <div class="hero-badge">
+    <span class="badge">TUTORIALS</span>
+  </div>
+  <h1>Learn to Build Without Code</h1>
+  <p class="hero-subtitle">Step-by-step guides to help you launch your first no-code project.</p>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid-2">
+      {% assign tutorial_posts = site.posts | where_exp: "post", "post.categories contains 'tutorials'" %}
+      {% for post in tutorial_posts %}
+      <article class="portfolio-card fade-in">
+        {% if post.image %}
+        <img src="{{ post.image }}" alt="{{ post.title }}" class="portfolio-card-image">
+        {% else %}
+        <div class="portfolio-card-image" style="background: linear-gradient(135deg, var(--card-yellow), var(--card-green));"></div>
+        {% endif %}
+        <div class="portfolio-card-content">
+          <div class="portfolio-card-meta">
+            <span class="badge badge-outline">{{ post.categories | first | default: "TUTORIAL" }}</span>
+            <span>{{ post.date | date: "%b %d, %Y" }}</span>
+          </div>
+          <a href="{{ post.url | relative_url }}" class="portfolio-card-title">{{ post.title }}</a>
+          <p class="portfolio-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+          <a href="{{ post.url | relative_url }}" class="btn btn-outline btn-sm">
+            READ TUTORIAL →
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if tutorial_posts.size == 0 %}
+    <div class="text-center">
+      <p style="font-size: 1.25rem; color: var(--gray);">More tutorials coming soon.</p>
+      <a href="{{ '/' | relative_url }}" class="btn btn-primary" style="margin-top: 24px;">BACK TO HOME →</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Ready to Build Your First App?</h2>
+      <p>Start with Base44 — it's free, no credit card required.</p>
+      <div class="cta-actions">
+        <a href="https://base44.pxf.io/c/7105524/2049275/25619?trafcat=lp" class="btn btn-primary btn-lg" target="_blank" rel="noopener sponsored">
+          START BUILDING FREE →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
