@@ -125,14 +125,3 @@ With Base44, you can build all of these yourself for $0-$29/month. The savings a
 ## Ready to Build Your Own?
 
 Stop paying monthly fees for tools you can build yourself. Create your own client portal, project tracker, or internal tool with Base44 — free to start.
-
-<a href="https://base44.pxf.io/c/7105524/2049275/25619?trafcat=lp" class="btn btn-primary" target="_blank" rel="noopener sponsored">
-  Build Your Client Portal Free →
-</a>
-
-## Related Content
-
-- [How I Built a SaaS MVP Calculator in 2 Hours]({{ '/build-saas-mvp-calculator-base44/' | relative_url }})
-- [The No-Code Business Idea Validator]({{ '/business-idea-validator-base44/' | relative_url }})
-- [Base44 Review: Is It the Best No-Code App Builder?]({{ '/base44-review/' | relative_url }})
-- [How to Build a SaaS MVP with Base44]({{ '/build-saas-mvp-base44/' | relative_url }})
