@@ -26,15 +26,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
 
-# Collections
-collections:
-  tutorials:
-    output: true
-    permalink: /tutorials/:title/
-  reviews:
-    output: true
-    permalink: /reviews/:title/
-
 # Defaults
 defaults:
   - scope:
@@ -43,16 +34,6 @@ defaults:
     values:
       layout: "post"
       author: "Chanw0w"
-  - scope:
-      path: ""
-      type: "tutorials"
-    values:
-      layout: "tutorial"
-  - scope:
-      path: ""
-      type: "reviews"
-    values:
-      layout: "review"
 
 # Exclude from build
 exclude:
