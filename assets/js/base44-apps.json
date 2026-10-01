@@ -1,0 +1,22 @@
+[
+  {
+    "name": "SaaS MVP Calculator",
+    "id": "6abe5f0a3dc74cb64357a5ea",
+    "slug": "saa-s-mvp-calculator-4357a5ea",
+    "publishedUrl": "https://saa-s-mvp-calculator-4357a5ea.base44.app",
+    "screenshotUrl": null,
+    "status": "ready"
+  },
+  {
+    "name": "Client Portal",
+    "id": "6abe5fa9ad17010806621a8f",
+    "slug": "client-portal-06621a8f",
+    "publishedUrl": "https://client-portal-06621a8f.base44.app",
+    "screenshotUrl": null,
+    "status": "ready"
+  },
+  {
+    "name": "AI Tutor App",
+    "error": "Create app failed (403): {\"error_type\":\"HTTPException\",\"message\":\"{'reason': 'free_app_limit_reached', 'limit': 5}\",\"detail\":{\"reason\":\"free_app_limit_reached\",\"limit\":5},\"traceback\":\"\",\"request_id\":null}"
+  }
+]
