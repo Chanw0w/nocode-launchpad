@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How I Built a SaaS MVP Calculator in 2 Hours with Base44"
-date: 2026-10-01 10:00:00 +0000
+date: 2026-10-01 00:00:00 +0000
 categories: [tutorials, base44, saas]
 tags: [base44, saas, mvp, calculator, no-code]
 excerpt: "Most founders spend $15K-$50K and months building an MVP. I built a calculator that shows exactly how much Base44 saves — in 2 hours."
