@@ -220,12 +220,24 @@ layout: default
     font-size: 0.8125rem;
   }
 
-  /* Post Content */
+  /* Post Content - White Container Box */
   .post-content {
     max-width: 750px;
+    background: var(--white);
+    border: 3px solid var(--border);
+    box-shadow: 8px 8px 0px var(--border);
+    padding: var(--space-10) var(--space-12);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  @media (max-width: 640px) {
+    .post-content {
+      padding: var(--space-6) var(--space-5);
+    }
   }
 
   .post-content h2 {
+    font-family: var(--font);
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     margin-top: var(--space-12);
     margin-bottom: var(--space-6);
@@ -238,18 +250,21 @@ layout: default
   }
 
   .post-content h3 {
+    font-family: var(--font);
     font-size: clamp(1.375rem, 3vw, 1.75rem);
     margin-top: var(--space-8);
     margin-bottom: var(--space-5);
   }
 
   .post-content h4 {
+    font-family: var(--font);
     font-size: 1.25rem;
     margin-top: var(--space-6);
     margin-bottom: var(--space-4);
   }
 
   .post-content p {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 1.125rem;
     line-height: 1.8;
     color: var(--gray);
@@ -264,6 +279,7 @@ layout: default
   }
 
   .post-content li {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 1.125rem;
     line-height: 1.8;
     color: var(--gray);
@@ -287,6 +303,7 @@ layout: default
   }
 
   .post-content blockquote {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     border-left: 6px solid var(--pink);
     padding: var(--space-6) var(--space-8);
     margin: var(--space-8) 0;
