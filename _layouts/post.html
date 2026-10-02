@@ -23,7 +23,7 @@ layout: default
   {% if page.image %}
   <div class="post-featured-image">
     <div class="container-narrow">
-      <img src="{{ page.image }}" alt="{{ page.title }}">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
     </div>
   </div>
   {% endif %}
@@ -79,7 +79,7 @@ layout: default
             {% assign related_count = related_count | plus: 1 %}
             <a href="{{ post.url | relative_url }}" class="related-card {{ related_color }}">
               {% if post.image %}
-              <img src="{{ post.image }}" alt="{{ post.title }}" class="related-card-image">
+              <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="related-card-image">
               {% endif %}
               <div class="related-card-content">
                 <span class="related-card-category">{{ post.categories | first | default: "POST" }}</span>

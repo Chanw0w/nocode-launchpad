@@ -78,7 +78,7 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
       {% for post in site.posts limit:4 %}
       <article class="portfolio-card fade-in">
         {% if post.image %}
-        <img src="{{ post.image }}" alt="{{ post.title }}" class="portfolio-card-image">
+        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="portfolio-card-image">
         {% else %}
         <div class="portfolio-card-image" style="background: linear-gradient(135deg, var(--bg-alt), #E0E0E0);"></div>
         {% endif %}
@@ -348,7 +348,7 @@ description: "Expert reviews, tutorials, and deals for Base44, Wix, and the best
       {% for post in site.posts limit:4 %}
       <article class="portfolio-card fade-in">
         {% if post.image %}
-        <img src="{{ post.image }}" alt="{{ post.title }}" class="portfolio-card-image">
+        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="portfolio-card-image">
         {% else %}
         <div class="portfolio-card-image" style="background: linear-gradient(135deg, #E0E0E0, #C0C0C0);"></div>
         {% endif %}
