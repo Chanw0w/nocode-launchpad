@@ -5,7 +5,7 @@ date: 2026-10-01 00:00:00 +0000
 categories: [tutorials, base44, saas]
 tags: [base44, saas, mvp, calculator, no-code]
 excerpt: "Most founders spend $15K-$50K and months building an MVP. I built a calculator that shows exactly how much Base44 saves — in 2 hours."
-image: /assets/images/app-screenshots/saas-calculator-home.png
+image: /assets/images/app-screenshots/saas-calculator-home.jpg
 author: Your Name
 affiliate:
   title: "Try Base44 Free"
@@ -36,7 +36,7 @@ I created an **SaaS MVP Calculator** — an interactive tool that lets founders 
 - **Time saved**: The difference in development time
 - **ROI**: The percentage you save by going no-code
 
-![SaaS MVP Calculator — Live App](/assets/images/app-screenshots/saas-calculator-home.png)
+![SaaS MVP Calculator — Live App](/assets/images/app-screenshots/saas-calculator-home.jpg)
 
 The calculator uses a clean, modern interface with a left-hand input panel and real-time results on the right. Users select their app's features, complexity, and team size — and instantly see how much they'd save by building with no-code.
 
@@ -65,12 +65,12 @@ The results are shareable — users can copy a link to show their co-founders or
 
 I built the entire calculator in **2 hours** using Base44. Here's what I did:
 
-![Base44 Homepage — Where It All Starts](/assets/images/base44-guide/base44-homepage.png)
+![Base44 Homepage — Where It All Starts](/assets/images/base44-guide/base44-homepage.jpg)
 
 **Step 1: Described the app in plain English.**
 I typed: "Build a calculator where users input their app idea details — number of pages, features needed, complexity level — and get a cost comparison between traditional development and no-code with Base44. Include a results page with a shareable summary."
 
-![Base44 Templates — Start from a Template](/assets/images/base44-guide/base44-templates.png)
+![Base44 Templates — Start from a Template](/assets/images/base44-guide/base44-templates.jpg)
 
 **Step 2: Base44 built the structure automatically.**
 Within minutes, Base44 generated:

@@ -563,4 +563,15 @@ layout: default
     });
   });
 })();
+
+// Lazy load images in post content
+(function() {
+  var images = document.querySelectorAll('.post-content img');
+  images.forEach(function(img) {
+    if (!img.hasAttribute('loading')) {
+      img.setAttribute('loading', 'lazy');
+      img.setAttribute('decoding', 'async');
+    }
+  });
+})();
 </script>

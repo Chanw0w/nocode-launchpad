@@ -3,8 +3,6 @@
    Matched to reference design
    ═══════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap');
-
 :root {
   /* Palette - Clean white + pastel cards */
   --bg: #FFFFFF;

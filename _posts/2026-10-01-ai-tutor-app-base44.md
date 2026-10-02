@@ -5,7 +5,7 @@ date: 2026-10-01 00:00:00 +0000
 categories: [tutorials, base44, education]
 tags: [base44, ai, tutor, education, no-code, socratic-method]
 excerpt: "I built a personalized AI tutoring app that teaches through guided questions instead of giving answers. Here's how Base44 made it possible."
-image: /assets/images/app-screenshots/tutor-app-home.png
+image: /assets/images/app-screenshots/tutor-app-home.jpg
 author: Your Name
 affiliate:
   title: "Try Base44 Free"
@@ -30,7 +30,7 @@ I wanted to build an app that uses this approach, powered by AI. And I wanted to
 - Supports multiple subjects: math, science, history, programming, and more
 - Includes a **courses dashboard** where students can browse and track their learning path
 
-![Thinkerwell — Home Page with Owl Mascot](/assets/images/app-screenshots/tutor-app-home.png)
+![Thinkerwell — Home Page with Owl Mascot](/assets/images/app-screenshots/tutor-app-home.jpg)
 
 ### The Owl Mascot
 
@@ -47,7 +47,7 @@ Instead of saying "The answer is 42," the tutor asks:
 
 The student arrives at the answer themselves — which means they actually understand it.
 
-![Thinkerwell — Onboarding Flow](/assets/images/app-screenshots/tutor-app-onboarding.png)
+![Thinkerwell — Onboarding Flow](/assets/images/app-screenshots/tutor-app-onboarding.jpg)
 
 ## How Base44 Made It Easy
 
