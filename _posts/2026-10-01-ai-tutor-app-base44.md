@@ -5,7 +5,7 @@ date: 2026-10-01 00:00:00 +0000
 categories: [tutorials, base44, education]
 tags: [base44, ai, tutor, education, no-code, socratic-method]
 excerpt: "I built a personalized AI tutoring app that teaches through guided questions instead of giving answers. Here's how Base44 made it possible."
-image: /assets/images/app-screenshots/tutor-app-home.jpg
+image: /assets/images/app-screenshots/tutor-app-home.webp
 author: Your Name
 affiliate:
   title: "Try Base44 Free"
@@ -30,7 +30,7 @@ I wanted to build an app that uses this approach, powered by AI. And I wanted to
 - Supports multiple subjects: math, science, history, programming, and more
 - Includes a **courses dashboard** where students can browse and track their learning path
 
-![Thinkerwell — Home Page with Owl Mascot](/assets/images/app-screenshots/tutor-app-home.jpg)
+![Thinkerwell — Home Page with Owl Mascot](/assets/images/app-screenshots/tutor-app-home.webp)
 
 ### The Owl Mascot
 
@@ -47,7 +47,7 @@ Instead of saying "The answer is 42," the tutor asks:
 
 The student arrives at the answer themselves — which means they actually understand it.
 
-![Thinkerwell — Onboarding Flow](/assets/images/app-screenshots/tutor-app-onboarding.jpg)
+![Thinkerwell — Onboarding Flow](/assets/images/app-screenshots/tutor-app-onboarding.webp)
 
 ## How Base44 Made It Easy
 
@@ -71,7 +71,7 @@ I asked Base44 to use a purple gradient theme with the owl mascot, rounded corne
 **Step 4: Published with one click.**
 The app was live on a Base44 URL immediately — no hosting setup needed.
 
-![Thinkerwell — Courses Dashboard](/assets/images/app-screenshots/tutor-app-courses.png)
+![Thinkerwell — Courses Dashboard](/assets/images/app-screenshots/tutor-app-courses.webp)
 
 ## What Base44 Handled
 
@@ -96,7 +96,7 @@ What's impressive is that Base44 generated a **full-stack app** with:
 
 All of this from a single text prompt. No code. No configuration files. No DevOps.
 
-![Thinkerwell — Learning Hub](/assets/images/app-screenshots/tutor-app-hub.png)
+![Thinkerwell — Learning Hub](/assets/images/app-screenshots/tutor-app-hub.webp)
 
 ## Why This Matters
 

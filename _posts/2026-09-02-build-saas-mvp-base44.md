@@ -5,7 +5,7 @@ date: 2026-09-02 10:00:00 +0000
 categories: [tutorials, no-code]
 tags: [base44, saas, mvp, tutorial, beginner]
 excerpt: "A step-by-step guide to building and launching your SaaS minimum viable product using Base44."
-image: /assets/images/base44-mvp-tutorial.jpg
+image: /assets/images/base44-mvp-tutorial.webp
 author: Your Name
 affiliate:
   title: "Follow Along with Base44"

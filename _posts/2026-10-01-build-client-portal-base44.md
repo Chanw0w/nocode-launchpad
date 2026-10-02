@@ -5,7 +5,7 @@ date: 2026-10-01 00:00:00 +0000
 categories: [tutorials, base44, freelancer]
 tags: [base44, client-portal, freelancer, saas, no-code]
 excerpt: "I was paying $200/month for a client portal tool. Built my own in an afternoon with Base44 — and my clients love it more."
-image: /assets/images/app-screenshots/client-portal-home.png
+image: /assets/images/app-screenshots/client-portal-home.webp
 author: Your Name
 affiliate:
   title: "Try Base44 Free"
@@ -34,7 +34,7 @@ I was essentially renting software forever. What if I could **build my own clien
 
 I created a **Client Portal** for my freelance design business. The app includes full authentication with email/password and Google login — clients get their own secure account.
 
-![Client Portal — Login Page](/assets/images/app-screenshots/client-portal-home.png)
+![Client Portal — Login Page](/assets/images/app-screenshots/client-portal-home.webp)
 
 Here's what it includes:
 
@@ -61,7 +61,7 @@ Here's what it includes:
 - Comment threads on specific projects
 - Email notifications for new messages
 
-![Client Portal — Registration](/assets/images/app-screenshots/client-portal-register.png)
+![Client Portal — Registration](/assets/images/app-screenshots/client-portal-register.webp)
 
 ### For Me (The Admin Side)
 

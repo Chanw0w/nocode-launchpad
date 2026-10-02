@@ -5,7 +5,7 @@ date: 2026-10-02 13:00:00 +0000
 categories: [comparisons, website-builder]
 tags: [wix, squarespace, comparison, website-builder, 2026]
 excerpt: "Wix vs Squarespace — an honest comparison of the two most popular website builders. Features, pricing, templates, and which one is right for you."
-image: /assets/images/wix-vs-squarespace.jpg
+image: /assets/images/wix-vs-squarespace.webp
 author: Chanw0w
 affiliate:
   title: "Try Wix Free"

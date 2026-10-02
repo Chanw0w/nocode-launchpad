@@ -5,7 +5,7 @@ date: 2026-10-01 00:00:00 +0000
 categories: [tutorials, base44, entrepreneur]
 tags: [base44, validation, startup, entrepreneur, no-code]
 excerpt: "Stop guessing if your business idea will work. Build a validation tool that guides you through market research, competitor analysis, and scoring — in 30 minutes."
-image: /assets/images/app-screenshots/idea-validator-landing-viewport.jpg
+image: /assets/images/app-screenshots/idea-validator-landing-viewport.webp
 author: Your Name
 affiliate:
   title: "Try Base44 Free"
@@ -34,7 +34,7 @@ I created a **Business Idea Validator** — a guided tool that walks aspiring en
 
 [**Try the live app →**](https://idea-validator-5b8fdb02.base44.app/)
 
-![Idea Validator — Landing Page](/assets/images/app-screenshots/idea-validator-landing-viewport.jpg)
+![Idea Validator — Landing Page](/assets/images/app-screenshots/idea-validator-landing-viewport.webp)
 
 ### Design
 
@@ -44,7 +44,7 @@ The app uses a **calm, premium aesthetic** — light backgrounds, serif headline
 
 The validator takes users through 6 steps:
 
-![Idea Validator — Wizard Step 1](/assets/images/app-screenshots/idea-validator-wizard.jpg)
+![Idea Validator — Wizard Step 1](/assets/images/app-screenshots/idea-validator-wizard.webp)
 
 **Step 1: Describe Your Idea**
 - Free-text input: "What does your business do?"
@@ -79,7 +79,7 @@ Based on your scores, the validator generates:
 - If validated: "Build your MVP with Base44 →"
 - If not validated: "Here's what to fix before building"
 
-![Idea Validator — Dashboard](/assets/images/app-screenshots/idea-validator-dashboard.jpg)
+![Idea Validator — Dashboard](/assets/images/app-screenshots/idea-validator-dashboard.webp)
 
 ### What Makes This Powerful
 

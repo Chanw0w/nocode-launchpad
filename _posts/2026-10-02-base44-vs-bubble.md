@@ -5,7 +5,7 @@ date: 2026-10-02 10:00:00 +0000
 categories: [comparisons, no-code]
 tags: [base44, bubble, no-code, comparison, app-builder]
 excerpt: "Base44 vs Bubble — an honest comparison of two popular no-code app builders. Features, pricing, ease of use, and which one is right for your project."
-image: /assets/images/base44-vs-bubble.jpg
+image: /assets/images/base44-vs-bubble.webp
 author: Chanw0w
 affiliate:
   title: "Try Base44 Free"

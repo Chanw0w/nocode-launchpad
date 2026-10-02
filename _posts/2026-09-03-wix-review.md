@@ -5,7 +5,7 @@ date: 2026-09-03 10:00:00 +0000
 categories: [reviews, website-builder]
 tags: [wix, website-builder, review, 2026, templates]
 excerpt: "In-depth Wix review covering features, pricing, templates, and who it's best for. Updated for 2026 with honest pros and cons."
-image: /assets/images/wix-review.jpg
+image: /assets/images/wix-review.webp
 author: Chanw0w
 affiliate:
   title: "Try Wix Free"

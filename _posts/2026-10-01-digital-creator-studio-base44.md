@@ -5,7 +5,7 @@ date: 2026-10-01 00:00:00 +0000
 categories: [tutorials, base44, creator]
 tags: [base44, digital-creator, theme-builder, portfolio, no-code, landing-page]
 excerpt: "Learn how to build a professional theme page builder for digital creators using Base44 — complete with landing page, dashboard, and modern dark design."
-image: /assets/images/app-screenshots/digital-creator-landing-viewport.jpg
+image: /assets/images/app-screenshots/digital-creator-landing-viewport.webp
 author: Your Name
 affiliate:
   title: "Try Base44 Free"
@@ -24,7 +24,7 @@ What if you could build a professional theme page builder specifically for creat
 
 I created **Digital Creator Studio** — a complete theme page builder and portfolio showcase for digital creators, built entirely with Base44.
 
-![Digital Creator Studio — Landing Page](/assets/images/app-screenshots/digital-creator-landing-viewport.jpg)
+![Digital Creator Studio — Landing Page](/assets/images/app-screenshots/digital-creator-landing-viewport.webp)
 
 ### Landing Page Features
 
@@ -39,13 +39,13 @@ The landing page includes everything a creator needs to convert visitors:
 - **FAQ Accordion** — Common questions answered
 - **Footer** — Newsletter signup and social links
 
-![Digital Creator Studio — Full Landing Page](/assets/images/app-screenshots/digital-creator-landing.jpg)
+![Digital Creator Studio — Full Landing Page](/assets/images/app-screenshots/digital-creator-landing.webp)
 
 ### Dashboard
 
 After logging in, creators get a powerful dashboard:
 
-![Digital Creator Studio — Dashboard](/assets/images/app-screenshots/digital-creator-dashboard-viewport.jpg)
+![Digital Creator Studio — Dashboard](/assets/images/app-screenshots/digital-creator-dashboard-viewport.webp)
 
 - **Quick Actions** — New Theme, Import Template, Publish Site
 - **Analytics Cards** — Active themes, total views, conversion rate

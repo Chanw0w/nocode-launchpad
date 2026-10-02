@@ -5,7 +5,7 @@ date: 2026-10-02 11:00:00 +0000
 categories: [comparisons, no-code]
 tags: [base44, alternatives, no-code, app-builder, bubble, glide, adalo]
 excerpt: "Looking for Base44 alternatives? Here are 5 no-code app builders I've tested, with honest pros and cons for each."
-image: /assets/images/base44-alternatives.jpg
+image: /assets/images/base44-alternatives.webp
 author: Chanw0w
 affiliate:
   title: "Try Base44 Free"

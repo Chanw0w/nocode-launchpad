@@ -5,7 +5,7 @@ date: 2026-10-02 14:00:00 +0000
 categories: [roundups, website-builder]
 tags: [website-builder, best-of, 2026, wix, squarespace, wordpress]
 excerpt: "The best website builders for 2026, ranked by ease of use, features, and value. Honest reviews for every type of site."
-image: /assets/images/best-website-builders.jpg
+image: /assets/images/best-website-builders.webp
 author: Chanw0w
 affiliate:
   title: "Our Top Pick: Wix"
