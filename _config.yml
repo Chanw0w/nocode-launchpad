@@ -27,6 +27,15 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
 
+# Sitemap exclusions
+sitemap:
+  exclude:
+    - googled854e46cdcd3121f.html
+    - _s8SqVs-JbWm9h2E7R0XCP097Cmuw1EqazqgCdZFASk.html
+    - premium.html
+    - analytics-setup.html
+    - social-ads/preview.html
+
 # Defaults
 defaults:
   - scope:
