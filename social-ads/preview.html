@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ad Preview — Base44 & Wix Campaign</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      line-height: 1.6;
+    }
+    .header {
+      text-align: center;
+      padding: 60px 24px 40px;
+      background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%);
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .header p { color: #888; font-size: 1.1rem; }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 24px;
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .tab {
+      padding: 10px 24px;
+      border: 2px solid #333;
+      background: transparent;
+      color: #888;
+      border-radius: 100px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .tab:hover { border-color: #555; color: #ccc; }
+    .tab.active { background: #fff; color: #000; border-color: #fff; }
+    .section { display: none; max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+    .section.active { display: block; }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .section-subtitle { color: #888; margin-bottom: 32px; }
+    .ad-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+    }
+    .ad-card {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .ad-card:hover { transform: translateY(-4px); border-color: #404040; }
+    .ad-media {
+      width: 100%;
+      aspect-ratio: 9/16;
+      max-height: 480px;
+      object-fit: cover;
+      background: #000;
+    }
+    .ad-media-video { object-fit: cover; }
+    .ad-body { padding: 20px; }
+    .ad-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .ad-id {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #1f1f1f;
+      color: #a0a0a0;
+    }
+    .ad-id.base44 { background: #1a1525; color: #c4b5fd; }
+    .ad-id.wix { background: #151a25; color: #93c5fd; }
+    .ad-psychology {
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: #1a1a1a;
+      color: #666;
+      font-style: italic;
+    }
+    .ad-headline {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .ad-copy {
+      font-size: 0.9rem;
+      color: #a0a0a0;
+      margin-bottom: 16px;
+      white-space: pre-line;
+    }
+    .ad-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid #2a2a2a;
+    }
+    .ad-cta {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .ad-link {
+      font-size: 0.75rem;
+      color: #666;
+      word-break: break-all;
+    }
+    .ad-tags {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: #555;
+    }
+    .video-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid #333;
+    }
+    .media-wrapper { position: relative; }
+    .summary {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 32px;
+    }
+    .summary h3 { margin-bottom: 16px; font-size: 1.1rem; }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .summary-item {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .summary-item .label { font-size: 0.75rem; color: #666; margin-bottom: 4px; }
+    .summary-item .value { font-size: 1.25rem; font-weight: 700; }
+    @media (max-width: 768px) {
+      .ad-grid { grid-template-columns: 1fr; }
+      .tabs { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Ad Campaign Preview</h1>
+    <p>10 conversion-optimized ads · Base44 & Wix · Instagram & Facebook</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showSection('all')">All Ads</button>
+    <button class="tab" onclick="showSection('base44')">Base44 (5)</button>
+    <button class="tab" onclick="showSection('wix')">Wix (5)</button>
+  </div>
+
+  <!-- ALL ADS -->
+  <div id="all" class="section active">
+    <div class="summary">
+      <h3>Campaign Summary</h3>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="label">Total Ads</div>
+          <div class="value">10</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">Videos</div>
+          <div class="value">2</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">Screenshots</div>
+          <div class="value">8</div>
+        </div>
+        <div class="summary-item">
+          <div class="label">Platforms</div>
+          <div class="value">IG + FB</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-grid" style="margin-top: 32px;">
+
+      <!-- B1 -->
+      <div class="ad-card">
+        <div class="media-wrapper">
+          <video class="ad-media ad-media-video" src="https://d3u0tzju9qaucj.cloudfront.net/8adfb570-3f91-406c-b753-b74371a0a2e9/4aae6639-1998-43c7-b87f-73f45a924ca9.mp4" autoplay muted loop playsinline></video>
+          <span class="video-badge">🎥 VIDEO</span>
+        </div>
+        <div class="ad-body">
+          <div class="ad-meta">
+            <span class="ad-id base44">B1 · BASE44</span>
+            <span class="ad-psychology">Hyperbolic Discounting</span>
+          </div>
+          <div class="ad-headline">Zero to App. Today.</div>
+          <div class="ad-copy">What if you could go from zero to a working SaaS app today?
+
+Not next month. Not after learning Python. TODAY.
+
+I built 5 production apps with Base44 — no code, no developers, no $50K budget.
+
+🔗 Start free → link in bio</div>
+          <div class="ad-footer">
+            <span class="ad-cta">CTA: Sign Up</span>
+            <span class="ad-link">base44.pxf.io/...</span>
+          </div>
+          <div class="ad-tags">#NoCode #Base44 #SaaS #Entrepreneur #BuildInPublic</div>
+        </div>
+      </div>
+
+      <!-- B2 -->
+      <div class="ad-card">
+        <img class="ad-media" src="../blog/assets/images/app-screenshots/idea-validator-landing-viewport.jpg" alt="Idea Validator" onerror="this.src='https://placehold.co/400x700/1a1a2e/fff?text=Idea+Validator'">
+        <div class="ad-body">
+          <div class="ad-meta">
+            <span class="ad-id base44">B2 · BASE44</span>
+            <span class="ad-psychology">Social Proof</span>
+          </div>
+          <div class="ad-headline">Validate Before You Build</div>
+          <div class="ad-copy">Stop guessing if your business idea will work.
+
+I built a Business Idea Validator that scores your idea across 5 dimensions:
+→ Market size
+→ Competition
+→ Feasibility
+→ Timing
+→ Differentiation
+
+Most entrepreneurs skip validation. That's why 90% of startups fail.
+
+🔗 Validate your idea free → link in bio</div>
+          <div class="ad-footer">
+            <span class="ad-cta">CTA: Sign Up</span>
+            <span class="ad-link">base44.pxf.io/...</span>
+          </div>
+          <div class="ad-tags">#NoCode #Startup #BusinessIdea #Validation #Base44</div>
+        </div>
+      </div>
+
+      <!-- B3 -->
+      <div class="ad-card">
+        <div class="media-wrapper">
+          <video class="ad-media ad-media-video" src="https://d3u0tzju9qaucj.cloudfront.net/8adfb570-3f91-406c-b753-b74371a0a2e9/8868760f-1bed-440a-810d-3425c90623f7.mp4" autoplay muted loop playsinline></video>
+          <span class="video-badge">🎥 VIDEO</span>
+        </div>
+        <div class="ad-body">
+          <div class="ad-meta">
+            <span class="ad-id base44">B3 · BASE44</span>
+            <span class="ad-psychology">Authority + Social Proof</span>
+          </div>
+          <div class="ad-headline">5 Apps. 1 Week. Zero Code.</div>
+          <div class="ad-copy">I built 5 production-ready apps in one week.
+
+Without writing a single line of code.
+
+1. 💡 Idea Validator
+2. 📊 SaaS MVP Calculator
+3. 📁 Client Portal
+4. 🦉 AI Tutor App
+5. 🎨 Digital Creator Studio
+
+All live. All free. All built with Base44.
+
+🔗 See for yourself → link in bio</div>
+          <div class="ad-footer">
+            <span class="ad-cta">CTA: Try It Free</span>
+            <span class="ad-link">base44.pxf.io/...</span>
+          </div>
+          <div class="ad-tags">#NoCode #Base44 #BuildInPublic #SaaS #Entrepreneur</div>
+        </div>
+      </div>
+
+      <!-- B4 -->
+      <div class="ad-card">
+        <img class="ad-media" src="../blog/assets/images/app-screenshots/client-portal-home.png" alt="Client Portal" onerror="this.src='https://placehold.co/400x700/1a1a2e/fff?text=Client+Portal'">
+        <div class="ad-body">
+          <div class="ad-meta">
+            <span class="ad-id base44">B4 · BASE44</span>
+            <span class="ad-psychology">Loss Aversion</span>
+          </div>
+          <div class="ad-headline">Stop Paying $200/Month</div>
+          <div class="ad-copy">I was paying $200/month for a client portal tool.
+
+$2,400/year for something I could build myself.
+
+So I did.
+
+Built my own Client Portal with Base44 in one afternoon.
+
+Now I own it completely. No monthly fees. No feature limits.
+
+🔗 Build yours free → link in bio</div>
+          <div class="ad-footer">
+            <span class="ad-cta">CTA: Sign Up</span>
+            <span class="ad-link">base44.pxf.io/...</span>
+          </div>
+          <div class="ad-tags">#Freelancer #ClientPortal #NoCode #Base44 #SaveMoney</div>
+        </div>
+      </div>
+
+      <!-- B5 -->
+      <div class="ad-card">
+        <img class="ad-media" src="../blog/assets/images/app-screenshots/saas-calculator-home.png" alt="SaaS Calculator" onerror="this.src='https://placehold.co/400x700/1a1a2e/fff?text=MVP+Calculator'">
+        <div class="ad-body">
+          <div class="ad-meta">
+            <span class="ad-id base44">B5 · BASE44</span>
+            <span class="ad-psychology">Anchoring</span>
+          </div>
+          <div class="ad-headline">How Much Are You Overpaying?</div>
+          <div class="ad-copy">Traditional MVP development:
+💰 $15,000 – $50,000
+⏳ 3-6 months
+
+Building with Base44:
+💰 Free to start
+⚡ Launch in days
+🎯 No coding required
+
+See the real numbers before you commit.
+
+🔗 Calculate your savings → link in bio</div>
+          <div class="ad-footer">
+            <span class="ad-cta">CTA: Learn More</span>
+            <span class="ad-link">base44.pxf.io/...</span>
+          </div>
+          <div class="ad-tags">#MVP #SaaS #StartupCosts #NoCode #Base44</div>
+        </div>
+      </div>
+
+      <!-- W1 -->
+      <div class="ad-card">
+        <img class="ad-media" src="../blog/assets/images/wix-guide/wix-templates.jpg" alt="Wix Templates" onerror="this.src='https://placehold.co/400x700/0d1525/fff?text=Wix+Templates'">
+        <div class="ad-body">
+          <div class="ad-meta">
+            <span class="ad-id wix">W1 · WIX</span>
+            <span class="ad-psychology">Visual Showcase</span>
+          </div>
+          <div class="ad-headline">800+ Templates. Zero Code.</div>
+          <div class="ad-copy">Your website shouldn't look like everyone else's.
+
+Wix gives you 800+ designer-made templates for every industry:
+→ Restaurants
+→ Portfolios
+→ Online stores
+→ Service businesses
+
+Customize every detail with drag-and-drop.
+
+🔗 Browse templates → link in bio</div>
+          <div class="ad-footer">
+            <span class="ad-cta">CTA: Get Started</span>
+            <span class="ad-link">wix.pxf.io/...</span>
+          </div>
+          <div class="ad-tags">#Wix #WebsiteBuilder #WebDesign #SmallBusiness</div>
+        </div>
+      </div>
+
+      <!-- W2 -->
+      <div class="ad-card">
+        <img class="ad-media" src="../blog/assets/images/wix-guide/wix-editor.jpg" alt="Wix Editor" onerror="this.src='https://placehold.co/400x700/0d1525/fff?text=Wix+Editor'">
+        <div class="ad-body">
+          <div class="ad-meta">
+            <span class="ad-id wix">W2 · WIX</span>
+            <span class="ad-psychology">Ease of Use</span>
+          </div>
+          <div class="ad-headline">Drag. Drop. Done.</div>
+          <div class="ad-copy">Building a website used to require:
+❌ Hiring a developer
+❌ Learning HTML/CSS
+❌ Waiting weeks for delivery
+
+Not anymore.
+
+Wix's drag-and-drop editor lets you:
+→ Move anything anywhere
+→ Customize every pixel
+→ Publish in one click
+
+🔗 Start building free → link in bio</div>
+          <div class="ad-footer">
+            <span class="ad-cta">CTA: Get Started</span>
+            <span class="ad-link">wix.pxf.io/...</span>
+          </div>
+          <div class="ad-tags">#Wix #WebsiteBuilder #DragAndDrop #NoCode</div>
+        </div>
+      </div>
+
+      <!-- W3 -->
+      <div class="ad-card">
+        <img class="ad-media" src="../blog/assets/images/wix-guide/wix-ecommerce.jpg" alt="Wix E-commerce" onerror="this.src='https://placehold.co/400x700/0d1525/fff?text=Wix+Ecommerce'">
+        <div class="ad-body">
+          <div class="ad-meta">
+            <span class="ad-id wix">W3 · WIX</span>
+            <span class="ad-psychology">Feature Showcase</span>
+          </div>
+          <div class="ad-headline">Start Selling Online Today</div>
+          <div class="ad-copy">Ready to start selling online?
+
+Wix E-commerce gives you everything:
+✅ Secure payments
+✅ Shipping & tax automation
+✅ Inventory management
+✅ Abandoned cart recovery
+✅ Mobile-optimized checkout
+
+No plugins. No complexity.
+
+🔗 Start selling → link in bio</div>
+          <div class="ad-footer">
+            <span class="ad-cta">CTA: Get Started</span>
+            <span class="ad-link">wix.pxf.io/...</span>
+          </div>
+          <div class="ad-tags">#Wix #Ecommerce #OnlineStore #SmallBusiness</div>
+        </div>
+      </div>
+
+      <!-- W4 -->
+      <div class="ad-card">
+        <img class="ad-media" src="../blog/assets/images/wix-guide/wix-homepage.jpg" alt="Wix Homepage" onerror="this.src='https://placehold.co/400x700/0d1525/fff?text=Wix+Website'">
+        <div class="ad-body">
+          <div class="ad-meta">
+            <span class="ad-id wix">W4 · WIX</span>
+            <span class="ad-psychology">Transformation</span>
+          </div>
+          <div class="ad-headline">Your Website. This Weekend.</div>
+          <div class="ad-copy">Monday: No website
+Tuesday: Signed up for Wix
+Wednesday: Picked a template
+Thursday: Customized with drag-and-drop
+Friday: Launched my professional website
+
+One week. No developers. No agencies.
+
+🔗 Start your website → link in bio</div>
+          <div class="ad-footer">
+            <span class="ad-cta">CTA: Get Started</span>
+            <span class="ad-link">wix.pxf.io/...</span>
+          </div>
+          <div class="ad-tags">#Wix #WebsiteBuilder #LaunchWeek #SmallBusiness</div>
+        </div>
+      </div>
+
+      <!-- W5 -->
+      <div class="ad-card">
+        <img class="ad-media" src="../blog/assets/images/wix-guide/wix-features.jpg" alt="Wix Features" onerror="this.src='https://placehold.co/400x700/0d1525/fff?text=Wix+All-in-One'">
+        <div class="ad-body">
+          <div class="ad-meta">
+            <span class="ad-id wix">W5 · WIX</span>
+            <span class="ad-psychology">Value Stacking</span>
+          </div>
+          <div class="ad-headline">Everything in One Place</div>
+          <div class="ad-copy">Stop juggling 5 different tools for your business.
+
+Wix brings everything together:
+🌐 Professional website
+🛒 Online store
+📧 Email marketing
+📊 Analytics & SEO
+💳 Payments
+
+One platform. One login. One bill.
+
+🔗 See all features → link in bio</div>
+          <div class="ad-footer">
+            <span class="ad-cta">CTA: Learn More</span>
+            <span class="ad-link">wix.pxf.io/...</span>
+          </div>
+          <div class="ad-tags">#Wix #AllInOne #SmallBusiness #WebsiteBuilder</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BASE44 ONLY -->
+  <div id="base44" class="section">
+    <div class="section-title">Base44 Campaign</div>
+    <div class="section-subtitle">5 ads promoting Base44 affiliate link · Focus: app building, cost savings, speed</div>
+    <div class="ad-grid">
+      <!-- Same B1-B5 cards duplicated via JS -->
+    </div>
+  </div>
+
+  <!-- WIX ONLY -->
+  <div id="wix" class="section">
+    <div class="section-title">Wix Campaign</div>
+    <div class="section-subtitle">5 ads promoting Wix affiliate link · Focus: website building, templates, e-commerce</div>
+    <div class="ad-grid">
+      <!-- Same W1-W5 cards duplicated via JS -->
+    </div>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+
+      // Clone cards for filtered views
+      if (id === 'base44' || id === 'wix') {
+        const target = document.getElementById(id).querySelector('.ad-grid');
+        const allCards = document.querySelectorAll('#all .ad-card');
+        target.innerHTML = '';
+        allCards.forEach(card => {
+          const badge = card.querySelector('.ad-id');
+          if (!badge) return;
+          const isBase44 = badge.classList.contains('base44');
+          const isWix = badge.classList.contains('wix');
+          if ((id === 'base44' && isBase44) || (id === 'wix' && isWix)) {
+            target.appendChild(card.cloneNode(true));
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>
