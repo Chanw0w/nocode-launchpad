@@ -1,1 +1,1 @@
-Sitemap: https://yourusername.github.io/sitemap.xml
+Sitemap: http://0.0.0.0:3000/sitemap.xml
