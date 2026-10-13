@@ -1,0 +1,23 @@
+services:
+  jekyll:
+    image: ruby:3.3-slim
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ruby_bundle:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    environment:
+      - BASE44_PREVIEW_MODE
+      - JEKYLL_ENV=development
+    command: ["sh", "-ec", "apt-get update -qq && apt-get install -y -qq build-essential git curl >/dev/null 2>&1; gem install bundler -v 4.0.9 --no-document; bundle install; exec bundle exec jekyll serve --host 0.0.0.0 --port 3000 --baseurl '' --force_polling --incremental"]
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:3000/"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 90s
+    restart: on-failure
+
+volumes:
+  ruby_bundle:

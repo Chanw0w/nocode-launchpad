@@ -1,15 +1,19 @@
 // Main JavaScript for NoCode Launchpad
+// Brutalist Pastel Theme
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize all components
   initMobileMenu();
   initScrollHeader();
   initSmoothScroll();
   initNewsletterForm();
   initAnimations();
+  initAffiliateTracking();
 });
 
+// ═══════════════════════════════════════════════════════════════
 // Mobile Menu
+// ═══════════════════════════════════════════════════════════════
+
 function initMobileMenu() {
   const menuToggle = document.getElementById('mobile-menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -23,7 +27,6 @@ function initMobileMenu() {
     document.body.style.overflow = isOpen ? '' : 'hidden';
   });
   
-  // Close menu on link click
   const mobileLinks = mobileMenu.querySelectorAll('a');
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -34,12 +37,14 @@ function initMobileMenu() {
   });
 }
 
+// ═══════════════════════════════════════════════════════════════
 // Header Scroll Effect
+// ═══════════════════════════════════════════════════════════════
+
 function initScrollHeader() {
   const header = document.getElementById('site-header');
   if (!header) return;
   
-  let lastScroll = 0;
   let ticking = false;
   
   window.addEventListener('scroll', () => {
@@ -53,7 +58,6 @@ function initScrollHeader() {
           header.classList.remove('scrolled');
         }
         
-        lastScroll = currentScroll;
         ticking = false;
       });
       ticking = true;
@@ -61,7 +65,10 @@ function initScrollHeader() {
   });
 }
 
+// ═══════════════════════════════════════════════════════════════
 // Smooth Scroll
+// ═══════════════════════════════════════════════════════════════
+
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -77,7 +84,10 @@ function initSmoothScroll() {
   });
 }
 
+// ═══════════════════════════════════════════════════════════════
 // Newsletter Form
+// ═══════════════════════════════════════════════════════════════
+
 function initNewsletterForm() {
   const forms = document.querySelectorAll('.newsletter-form');
   
@@ -89,42 +99,26 @@ function initNewsletterForm() {
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
       
-      // Disable button and show loading
       submitBtn.disabled = true;
-      submitBtn.innerHTML = `
-        <svg width="20" height="20" viewBox="0 0 20 20" class="spinner">
-          <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="50" stroke-dashoffset="50">
-            <animate attributeName="stroke-dashoffset" values="50;0" dur="1s" repeatCount="indefinite"/>
-          </circle>
-        </svg>
-        Subscribing...
-      `;
+      submitBtn.innerHTML = 'Subscribing...';
       
       try {
-        // Here you would typically send to your email service
-        // For now, we'll simulate a success
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-        // Show success
-        submitBtn.innerHTML = '✓ Subscribed!';
-        submitBtn.style.background = '#10b981';
+        submitBtn.innerHTML = 'Subscribed!';
         emailInput.value = '';
         
-        // Reset after 3 seconds
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
-          submitBtn.style.background = '';
           submitBtn.disabled = false;
         }, 3000);
         
       } catch (error) {
         console.error('Newsletter subscription error:', error);
         submitBtn.innerHTML = 'Error - Try Again';
-        submitBtn.style.background = '#ef4444';
         
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
-          submitBtn.style.background = '';
           submitBtn.disabled = false;
         }, 3000);
       }
@@ -132,9 +126,11 @@ function initNewsletterForm() {
   });
 }
 
+// ═══════════════════════════════════════════════════════════════
 // Animations
+// ═══════════════════════════════════════════════════════════════
+
 function initAnimations() {
-  // Intersection Observer for fade-in animations
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -149,14 +145,39 @@ function initAnimations() {
     });
   }, observerOptions);
   
-  // Observe elements
-  document.querySelectorAll('.card, .post-card, .feature-card').forEach(el => {
+  document.querySelectorAll('.card, .portfolio-card, .stat-card, .testimonial-card, .tool-card').forEach(el => {
     el.style.opacity = '0';
     observer.observe(el);
   });
 }
 
-// Utility: Debounce
+// ═══════════════════════════════════════════════════════════════
+// Affiliate Link Tracking
+// ═══════════════════════════════════════════════════════════════
+
+function initAffiliateTracking() {
+  document.querySelectorAll('a[href*="pxf.io"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const url = link.href;
+      const program = url.includes('base44') ? 'Base44' : 'Wix';
+      
+      console.log(`Affiliate click: ${program}`, url);
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'affiliate_click', {
+          'event_category': 'affiliate',
+          'event_label': program,
+          'value': 1
+        });
+      }
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Utilities
+// ═══════════════════════════════════════════════════════════════
+
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -169,7 +190,6 @@ function debounce(func, wait) {
   };
 }
 
-// Utility: Format number
 function formatNumber(num) {
   if (num >= 1000000) {
     return (num / 1000000).toFixed(1) + 'M';
@@ -180,13 +200,13 @@ function formatNumber(num) {
   return num.toString();
 }
 
-// Export for use in other scripts
 window.NoCodeLaunchpad = {
   initMobileMenu,
   initScrollHeader,
   initSmoothScroll,
   initNewsletterForm,
   initAnimations,
+  initAffiliateTracking,
   debounce,
   formatNumber
 };
