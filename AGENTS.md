@@ -24,9 +24,9 @@ The site is served via `docker compose -f docker-compose.base44.yml up -d` (port
 - `social-ads/preview.html` — standalone ad preview page (excluded from sitemap)
 - All asset links use Jekyll's `relative_url` filter, so the baseurl override works cleanly.
 
-## Known Issues (pre-existing)
+## Known Issues (fixed)
 
-- Two blog posts (`2026-10-02-wix-vs-squarespace.md`, `2026-10-02-best-website-builders.md`) reference OG images (`/assets/images/wix-vs-squarespace.webp`, `/assets/images/best-website-builders.webp`) that were never created. These cause console errors but do not affect page rendering.
+- Six blog posts referenced `image:` front matter pointing to WebP files that were never created (`wix-vs-squarespace`, `best-website-builders`, `wix-review`, `base44-alternatives`, `base44-vs-bubble`, `best-no-code-app-builders`). The `image:` lines were removed; the homepage's portfolio cards use a gradient fallback when `post.image` is absent.
 
 ## Verification
 
